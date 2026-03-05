@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MilitaryGeo.Infrastructure/1.0.0": {
+        "runtime": {
+          "MilitaryGeo.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MilitaryGeo.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

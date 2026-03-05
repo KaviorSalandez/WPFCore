@@ -1,0 +1,90 @@
+﻿using Syncfusion.SfSkinManager;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace MilitaryGeo.Desktop
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Password;
+
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Vui lòng nhập tên đăng nhập!", "Thông báo", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                txtUsername.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu!", "Thông báo", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                txtPassword.Focus();
+                return;
+            }
+
+            // TODO: Implement authentication logic here
+            // Example:
+            // if (username == "admin" && password == "admin123")
+            // {
+            //     // Open main application window
+            //     // var mainWindow = new DashboardWindow();
+            //     // mainWindow.Show();
+            //     // this.Close();
+            // }
+            // else
+            // {
+            //     MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập",
+            //         MessageBoxButton.OK, MessageBoxImage.Error);
+            // }
+
+            MessageBox.Show($"Đăng nhập với:\nUsername: {username}\nRemember: {chkRememberMe.IsChecked}", 
+                "Demo", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void lnkForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Chức năng quên mật khẩu sẽ được phát triển sau!", "Thông báo", 
+                MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void lnkRegister_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Chức năng đăng ký sẽ được phát triển sau!", "Thông báo", 
+                MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
+    }
+}

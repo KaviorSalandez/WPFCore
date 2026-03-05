@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MilitaryGeo.Application/MilitaryGeo.Application.csproj" />
+  <Project Path="MilitaryGeo.Desktop/MilitaryGeo.Desktop.csproj" />
+  <Project Path="MilitaryGeo.Domain/MilitaryGeo.Domain.csproj" />
+  <Project Path="MilitaryGeo.Infrastructure/MilitaryGeo.Infrastructure.csproj" />
+</Solution>

@@ -1,0 +1,24 @@
+﻿using Syncfusion.Licensing;
+using System.Configuration;
+using System.Data;
+using System.Windows;
+
+namespace MilitaryGeo.Desktop
+{
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
+        public App()
+        {
+            // Register Syncfusion license
+            SyncfusionLicenseProvider.RegisterLicense("YOUR_LICENSE_KEY_HERE");
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+        }
+    }
+}

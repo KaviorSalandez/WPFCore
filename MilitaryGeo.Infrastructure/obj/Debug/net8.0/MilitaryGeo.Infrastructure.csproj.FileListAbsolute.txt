@@ -1,0 +1,11 @@
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\bin\Debug\net8.0\MilitaryGeo.Infrastructure.deps.json
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\bin\Debug\net8.0\MilitaryGeo.Infrastructure.dll
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\bin\Debug\net8.0\MilitaryGeo.Infrastructure.pdb
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\obj\Debug\net8.0\MilitaryGeo.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\obj\Debug\net8.0\MilitaryGeo.Infrastructure.AssemblyInfoInputs.cache
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\obj\Debug\net8.0\MilitaryGeo.Infrastructure.AssemblyInfo.cs
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\obj\Debug\net8.0\MilitaryGeo.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\obj\Debug\net8.0\MilitaryGeo.Infrastructure.dll
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\obj\Debug\net8.0\refint\MilitaryGeo.Infrastructure.dll
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\obj\Debug\net8.0\MilitaryGeo.Infrastructure.pdb
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Infrastructure\obj\Debug\net8.0\ref\MilitaryGeo.Infrastructure.dll

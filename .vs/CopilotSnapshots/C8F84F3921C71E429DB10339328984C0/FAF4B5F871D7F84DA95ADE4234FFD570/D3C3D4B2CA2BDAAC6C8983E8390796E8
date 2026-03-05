@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace MilitaryGeo.Desktop
+{
+    /// <summary>
+    /// Interaction logic for MainWorkSpace.xaml
+    /// </summary>
+    public partial class MainWorkSpace : Window
+    {
+        public MainWorkSpace()
+        {
+            InitializeComponent();
+            LoadRecentActivity();
+        }
+
+        public MainWorkSpace(string username) : this()
+        {
+            txtUserName.Text = username;
+        }
+
+        private void LoadRecentActivity()
+        {
+            var activities = new ObservableCollection<RecentActivity>
+            {
+                new RecentActivity { Time = "10:30 AM", Activity = "Cập nhật bản đồ khu vực A", User = "Nguyễn Văn A", Status = "Hoàn thành" },
+                new RecentActivity { Time = "09:15 AM", Activity = "Thêm mới tọa độ địa lý", User = "Trần Thị B", Status = "Hoàn thành" },
+                new RecentActivity { Time = "08:45 AM", Activity = "Import dữ liệu từ file Excel", User = "Lê Văn C", Status = "Đang xử lý" },
+                new RecentActivity { Time = "08:20 AM", Activity = "Xuất báo cáo tháng 12", User = "Phạm Văn D", Status = "Hoàn thành" },
+                new RecentActivity { Time = "07:50 AM", Activity = "Cập nhật thông tin người dùng", User = "Hoàng Thị E", Status = "Hoàn thành" }
+            };
+
+            gridRecentActivity.ItemsSource = activities;
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất",
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                var loginWindow = new MainWindow();
+                loginWindow.Show();
+                this.Close();
+            }
+        }
+
+        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "Tìm kiếm...")
+            {
+                txtSearch.Text = "";
+                txtSearch.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                txtSearch.Text = "Tìm kiếm...";
+                txtSearch.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#999999"));
+            }
+        }
+    }
+
+    public class RecentActivity
+    {
+        public string Time { get; set; }
+        public string Activity { get; set; }
+        public string User { get; set; }
+        public string Status { get; set; }
+    }
+}

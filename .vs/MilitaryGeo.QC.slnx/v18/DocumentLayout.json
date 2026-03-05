@@ -1,0 +1,356 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Data\\AME\\MilitaryGeo.QC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\usercontrols\\nguoidung.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\usercontrols\\nguoidung.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\mainworkspace.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\mainworkspace.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\mainworkspace.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\mainworkspace.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\usercontrols\\nguoidung.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\usercontrols\\nguoidung.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\usercontrols\\dashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\usercontrols\\dashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\entitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\basesoftdeleteentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\basesoftdeleteentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\entityauditbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\entityauditbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\entityabstraction\\iauditable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\entityabstraction\\iauditable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\entityabstraction\\ientityauditbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\entityabstraction\\ientityauditbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\entityabstraction\\ientitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\entityabstraction\\ientitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\entityabstraction\\idatetracking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\entityabstraction\\idatetracking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\entityabstraction\\isoftdelete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\entityabstraction\\isoftdelete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.domain\\base\\entityabstraction\\iusertracking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6609BB91-6389-43F1-9FCC-33418AFEA1A8}|MilitaryGeo.Domain\\MilitaryGeo.Domain.csproj|solutionrelative:militarygeo.domain\\base\\entityabstraction\\iusertracking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F6FE2A1-2435-4A5E-99E7-58FC13E8BD6A}|MilitaryGeo.Infrastructure\\MilitaryGeo.Infrastructure.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.infrastructure\\di\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F6FE2A1-2435-4A5E-99E7-58FC13E8BD6A}|MilitaryGeo.Infrastructure\\MilitaryGeo.Infrastructure.csproj|solutionrelative:militarygeo.infrastructure\\di\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|d:\\data\\ame\\militarygeo.qc\\militarygeo.desktop\\usercontrols\\dashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE5F4A14-E657-4B83-81F0-E8DCEFF4C33C}|MilitaryGeo.Desktop\\MilitaryGeo.Desktop.csproj|solutionrelative:militarygeo.desktop\\usercontrols\\dashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NguoiDung.xaml.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\UserControls\\NguoiDung.xaml.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\UserControls\\NguoiDung.xaml.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\UserControls\\NguoiDung.xaml.cs",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\UserControls\\NguoiDung.xaml.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T09:43:04.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Dashboard.xaml.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\UserControls\\Dashboard.xaml.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\UserControls\\Dashboard.xaml.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\UserControls\\Dashboard.xaml.cs",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\UserControls\\Dashboard.xaml.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAEBUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T09:41:40.206Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Dashboard.xaml",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\UserControls\\Dashboard.xaml",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\UserControls\\Dashboard.xaml",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\UserControls\\Dashboard.xaml",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\UserControls\\Dashboard.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-05T09:37:06.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NguoiDung.xaml",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\UserControls\\NguoiDung.xaml",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\UserControls\\NguoiDung.xaml",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\UserControls\\NguoiDung.xaml",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\UserControls\\NguoiDung.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-05T09:36:36.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWorkSpace.xaml.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\MainWorkSpace.xaml.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\MainWorkSpace.xaml.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\MainWorkSpace.xaml.cs",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\MainWorkSpace.xaml.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAIwIsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T09:23:06.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWorkSpace.xaml",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\MainWorkSpace.xaml",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\MainWorkSpace.xaml",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\MainWorkSpace.xaml",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\MainWorkSpace.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-05T09:19:30.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IDateTracking.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IDateTracking.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IDateTracking.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IDateTracking.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IDateTracking.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:31:04.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IUserTracking.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IUserTracking.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IUserTracking.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IUserTracking.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IUserTracking.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:30:22.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\App.xaml.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\App.xaml.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\App.xaml.cs",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T08:25:42.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BaseSoftDeleteEntity.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\BaseSoftDeleteEntity.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\BaseSoftDeleteEntity.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\BaseSoftDeleteEntity.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\BaseSoftDeleteEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:34:04.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAgwF8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T04:26:12.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IAuditable.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IAuditable.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IAuditable.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IAuditable.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IAuditable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:32:29.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\MainWindow.xaml",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\MainWindow.xaml",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-05T08:55:27.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IEntityBase.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IEntityBase.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IEntityBase.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IEntityBase.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IEntityBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:31:32.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IEntityAuditBase.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IEntityAuditBase.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IEntityAuditBase.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\IEntityAuditBase.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\IEntityAuditBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:32:06.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EntityBase.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityBase.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\EntityBase.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityBase.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\EntityBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:33:02.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\appsettings.json",
+              "RelativeDocumentMoniker": "MilitaryGeo.Desktop\\appsettings.json",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Desktop\\appsettings.json",
+              "RelativeToolTip": "MilitaryGeo.Desktop\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-05T08:46:10.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ISoftDelete.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\ISoftDelete.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\ISoftDelete.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAbstraction\\ISoftDelete.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\EntityAbstraction\\ISoftDelete.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:29:54.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EntityAuditBase.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAuditBase.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Domain\\Base\\EntityAuditBase.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Domain\\Base\\EntityAuditBase.cs",
+              "RelativeToolTip": "MilitaryGeo.Domain\\Base\\EntityAuditBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:33:32.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Infrastructure\\DI\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "MilitaryGeo.Infrastructure\\DI\\DependencyInjection.cs",
+              "ToolTip": "D:\\Data\\AME\\MilitaryGeo.QC\\MilitaryGeo.Infrastructure\\DI\\DependencyInjection.cs",
+              "RelativeToolTip": "MilitaryGeo.Infrastructure\\DI\\DependencyInjection.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T04:35:13.381Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
