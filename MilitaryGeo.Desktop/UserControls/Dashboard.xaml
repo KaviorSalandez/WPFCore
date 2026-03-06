@@ -9,27 +9,162 @@
              d:DesignHeight="800" d:DesignWidth="1200"
              Background="#F5F5F5">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="20">
-            <!-- Welcome Section -->
-            <Border Background="White"
-                   CornerRadius="8"
-                   Padding="30"
-                   Margin="0,0,0,20">
-                <StackPanel>
-                    <TextBlock Text="Chào mừng trở lại!" 
-                              FontSize="28" 
-                              FontWeight="Bold"
-                              Foreground="#333333"
-                              Margin="0,0,0,10"/>
-                    <TextBlock Text="Hệ thống quản lý dữ liệu địa lý quân sự" 
-                              FontSize="14" 
-                              Foreground="#666666"/>
-                </StackPanel>
+    <UserControl.Resources>
+        <!-- Stat Card Style -->
+        <Style x:Key="StatCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="25"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" 
+                                    Direction="270" 
+                                    ShadowDepth="2" 
+                                    Opacity="0.1" 
+                                    BlurRadius="8"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                           To="-5" Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Effect).(DropShadowEffect.ShadowDepth)"
+                                           To="8" Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                           To="0.15" Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                           To="0" Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Effect).(DropShadowEffect.ShadowDepth)"
+                                           To="2" Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                           To="0.1" Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Quick Action Button Style -->
+        <Style x:Key="QuickActionButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="20,15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                               CornerRadius="8"
+                               Padding="{TemplateBinding Padding}">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Direction="270" ShadowDepth="1" Opacity="0.08" BlurRadius="6"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F8F9FA"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="30,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Welcome Header with Gradient -->
+            <Border Grid.Row="0" 
+                    CornerRadius="16"
+                    Margin="0,0,0,25"
+                    Height="180">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#4a7c2c" Offset="0"/>
+                        <GradientStop Color="#5a8c3c" Offset="0.5"/>
+                        <GradientStop Color="#6b9e4d" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" Direction="270" ShadowDepth="3" Opacity="0.15" BlurRadius="12"/>
+                </Border.Effect>
+                
+                <Grid Margin="40,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="🎖️ Dashboard - Hệ thống quản lý dữ liệu địa lý quân sự" 
+                                  FontSize="16" 
+                                  FontWeight="SemiBold"
+                                  Foreground="White"
+                                  Opacity="0.9"
+                                  Margin="0,0,0,8"/>
+                        <TextBlock x:Name="txtWelcome"
+                                  Text="Chào mừng trở lại, Administrator!" 
+                                  FontSize="32" 
+                                  FontWeight="Bold"
+                                  Foreground="White"/>
+                        <TextBlock x:Name="txtCurrentTime"
+                                  FontSize="14" 
+                                  Foreground="White"
+                                  Opacity="0.85"
+                                  Margin="0,8,0,0"/>
+                    </StackPanel>
+
+                    <Border Grid.Column="1" 
+                            Background="White"
+                            CornerRadius="12"
+                            Padding="25,20"
+                            VerticalAlignment="Center"
+                            Opacity="0.95"
+                            MinWidth="180">
+                        <StackPanel>
+                            <TextBlock Text="📊" 
+                                      FontSize="32" 
+                                      HorizontalAlignment="Center" 
+                                      Margin="0,0,0,8"/>
+                            <TextBlock Text="Hoạt động hôm nay" 
+                                      FontSize="12" 
+                                      Foreground="#666666"
+                                      HorizontalAlignment="Center"
+                                      TextWrapping="Wrap"
+                                      TextAlignment="Center"
+                                      Margin="0,0,0,5"/>
+                            <TextBlock Text="156 sự kiện" 
+                                      FontSize="20" 
+                                      FontWeight="Bold"
+                                      Foreground="#4a7c2c"
+                                      HorizontalAlignment="Center"
+                                      TextWrapping="Wrap"
+                                      TextAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
             </Border>
 
-            <!-- Statistics Cards -->
-            <Grid Margin="0,0,0,20">
+            <!-- Statistics Cards Grid -->
+            <Grid Grid.Row="1" Margin="0,0,0,25">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -39,113 +174,558 @@
 
                 <!-- Card 1: Total Maps -->
                 <Border Grid.Column="0" 
-                       Background="White"
-                       CornerRadius="8"
-                       Padding="20"
-                       Margin="0,0,10,0">
-                    <StackPanel>
-                        <TextBlock Text="🗺️" FontSize="32" Margin="0,0,0,10"/>
-                        <TextBlock Text="Tổng bản đồ" 
-                                  FontSize="13" 
-                                  Foreground="#666666"
-                                  Margin="0,0,0,5"/>
-                        <TextBlock Text="1,234" 
-                                  FontSize="28" 
-                                  FontWeight="Bold"
-                                  Foreground="#4a7c2c"/>
-                    </StackPanel>
+                       Style="{StaticResource StatCardStyle}"
+                       Margin="0,0,15,0">
+                    <Border.RenderTransform>
+                        <TranslateTransform/>
+                    </Border.RenderTransform>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                               Background="#E8F5E9"
+                               CornerRadius="10"
+                               Width="56"
+                               Height="56"
+                               HorizontalAlignment="Left"
+                               Margin="0,0,0,15">
+                            <TextBlock Text="🗺️" 
+                                      FontSize="28" 
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Row="1">
+                            <TextBlock Text="Tổng bản đồ" 
+                                      FontSize="13" 
+                                      Foreground="#888888"
+                                      Margin="0,0,0,8"/>
+                            <TextBlock Text="1,234" 
+                                      FontSize="32" 
+                                      FontWeight="Bold"
+                                      Foreground="#333333"
+                                      Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="↗" 
+                                          FontSize="14" 
+                                          Foreground="#4CAF50"
+                                          FontWeight="Bold"
+                                          Margin="0,0,5,0"/>
+                                <TextBlock Text="+12.5%" 
+                                          FontSize="12" 
+                                          Foreground="#4CAF50"
+                                          FontWeight="SemiBold"
+                                          VerticalAlignment="Center"
+                                          Margin="0,0,5,0"/>
+                                <TextBlock Text="so với tháng trước" 
+                                          FontSize="11" 
+                                          Foreground="#999999"
+                                          VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
                 </Border>
 
                 <!-- Card 2: Data Files -->
                 <Border Grid.Column="1" 
-                       Background="White"
-                       CornerRadius="8"
-                       Padding="20"
-                       Margin="0,0,10,0">
-                    <StackPanel>
-                        <TextBlock Text="📁" FontSize="32" Margin="0,0,0,10"/>
-                        <TextBlock Text="Tệp dữ liệu" 
-                                  FontSize="13" 
-                                  Foreground="#666666"
-                                  Margin="0,0,0,5"/>
-                        <TextBlock Text="5,678" 
-                                  FontSize="28" 
-                                  FontWeight="Bold"
-                                  Foreground="#2196F3"/>
-                    </StackPanel>
+                       Style="{StaticResource StatCardStyle}"
+                       Margin="0,0,15,0">
+                    <Border.RenderTransform>
+                        <TranslateTransform/>
+                    </Border.RenderTransform>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                               Background="#E3F2FD"
+                               CornerRadius="10"
+                               Width="56"
+                               Height="56"
+                               HorizontalAlignment="Left"
+                               Margin="0,0,0,15">
+                            <TextBlock Text="📁" 
+                                      FontSize="28" 
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Row="1">
+                            <TextBlock Text="Tệp dữ liệu" 
+                                      FontSize="13" 
+                                      Foreground="#888888"
+                                      Margin="0,0,0,8"/>
+                            <TextBlock Text="5,678" 
+                                      FontSize="32" 
+                                      FontWeight="Bold"
+                                      Foreground="#333333"
+                                      Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="↗" 
+                                          FontSize="14" 
+                                          Foreground="#2196F3"
+                                          FontWeight="Bold"
+                                          Margin="0,0,5,0"/>
+                                <TextBlock Text="+8.3%" 
+                                          FontSize="12" 
+                                          Foreground="#2196F3"
+                                          FontWeight="SemiBold"
+                                          VerticalAlignment="Center"
+                                          Margin="0,0,5,0"/>
+                                <TextBlock Text="so với tháng trước" 
+                                          FontSize="11" 
+                                          Foreground="#999999"
+                                          VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
                 </Border>
 
                 <!-- Card 3: Coordinates -->
                 <Border Grid.Column="2" 
-                       Background="White"
-                       CornerRadius="8"
-                       Padding="20"
-                       Margin="0,0,10,0">
-                    <StackPanel>
-                        <TextBlock Text="📍" FontSize="32" Margin="0,0,0,10"/>
-                        <TextBlock Text="Tọa độ" 
-                                  FontSize="13" 
-                                  Foreground="#666666"
-                                  Margin="0,0,0,5"/>
-                        <TextBlock Text="12,345" 
-                                  FontSize="28" 
-                                  FontWeight="Bold"
-                                  Foreground="#FF9800"/>
-                    </StackPanel>
+                       Style="{StaticResource StatCardStyle}"
+                       Margin="0,0,15,0">
+                    <Border.RenderTransform>
+                        <TranslateTransform/>
+                    </Border.RenderTransform>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                               Background="#FFF3E0"
+                               CornerRadius="10"
+                               Width="56"
+                               Height="56"
+                               HorizontalAlignment="Left"
+                               Margin="0,0,0,15">
+                            <TextBlock Text="📍" 
+                                      FontSize="28" 
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Row="1">
+                            <TextBlock Text="Điểm tọa độ" 
+                                      FontSize="13" 
+                                      Foreground="#888888"
+                                      Margin="0,0,0,8"/>
+                            <TextBlock Text="12,345" 
+                                      FontSize="32" 
+                                      FontWeight="Bold"
+                                      Foreground="#333333"
+                                      Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="↗" 
+                                          FontSize="14" 
+                                          Foreground="#FF9800"
+                                          FontWeight="Bold"
+                                          Margin="0,0,5,0"/>
+                                <TextBlock Text="+15.7%" 
+                                          FontSize="12" 
+                                          Foreground="#FF9800"
+                                          FontWeight="SemiBold"
+                                          VerticalAlignment="Center"
+                                          Margin="0,0,5,0"/>
+                                <TextBlock Text="so với tháng trước" 
+                                          FontSize="11" 
+                                          Foreground="#999999"
+                                          VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
                 </Border>
 
-                <!-- Card 4: Users -->
+                <!-- Card 4: Active Users -->
                 <Border Grid.Column="3" 
-                       Background="White"
-                       CornerRadius="8"
-                       Padding="20">
-                    <StackPanel>
-                        <TextBlock Text="👥" FontSize="32" Margin="0,0,0,10"/>
-                        <TextBlock Text="Người dùng" 
-                                  FontSize="13" 
-                                  Foreground="#666666"
-                                  Margin="0,0,0,5"/>
-                        <TextBlock Text="89" 
-                                  FontSize="28" 
-                                  FontWeight="Bold"
-                                  Foreground="#9C27B0"/>
-                    </StackPanel>
+                       Style="{StaticResource StatCardStyle}">
+                    <Border.RenderTransform>
+                        <TranslateTransform/>
+                    </Border.RenderTransform>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                               Background="#F3E5F5"
+                               CornerRadius="10"
+                               Width="56"
+                               Height="56"
+                               HorizontalAlignment="Left"
+                               Margin="0,0,0,15">
+                            <TextBlock Text="👥" 
+                                      FontSize="28" 
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Row="1">
+                            <TextBlock Text="Người dùng hoạt động" 
+                                      FontSize="13" 
+                                      Foreground="#888888"
+                                      Margin="0,0,0,8"/>
+                            <TextBlock Text="89" 
+                                      FontSize="32" 
+                                      FontWeight="Bold"
+                                      Foreground="#333333"
+                                      Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="↗" 
+                                          FontSize="14" 
+                                          Foreground="#9C27B0"
+                                          FontWeight="Bold"
+                                          Margin="0,0,5,0"/>
+                                <TextBlock Text="+5 người" 
+                                          FontSize="12" 
+                                          Foreground="#9C27B0"
+                                          FontWeight="SemiBold"
+                                          VerticalAlignment="Center"
+                                          Margin="0,0,5,0"/>
+                                <TextBlock Text="trong tuần này" 
+                                          FontSize="11" 
+                                          Foreground="#999999"
+                                          VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
                 </Border>
             </Grid>
 
-            <!-- Recent Activity -->
-            <Border Background="White"
-                   CornerRadius="8"
-                   Padding="20">
+            <!-- Quick Actions -->
+            <Border Grid.Row="2" 
+                    Background="White"
+                    CornerRadius="12"
+                    Padding="25"
+                    Margin="0,0,0,25">
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" Direction="270" ShadowDepth="2" Opacity="0.1" BlurRadius="8"/>
+                </Border.Effect>
+                
                 <StackPanel>
-                    <TextBlock Text="Hoạt động gần đây" 
+                    <TextBlock Text="⚡ Thao tác nhanh" 
                               FontSize="18" 
                               FontWeight="Bold"
                               Foreground="#333333"
                               Margin="0,0,0,20"/>
 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" 
+                                Style="{StaticResource QuickActionButtonStyle}"
+                                Margin="0,0,10,0">
+                            <StackPanel>
+                                <TextBlock Text="📤" FontSize="32" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                                <TextBlock Text="Tải lên bản đồ" 
+                                          FontSize="13" 
+                                          FontWeight="SemiBold"
+                                          Foreground="#333333"
+                                          HorizontalAlignment="Center"
+                                          TextWrapping="Wrap"
+                                          TextAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Grid.Column="1" 
+                                Style="{StaticResource QuickActionButtonStyle}"
+                                Margin="0,0,10,0">
+                            <StackPanel>
+                                <TextBlock Text="📊" FontSize="32" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                                <TextBlock Text="Xem báo cáo" 
+                                          FontSize="13" 
+                                          FontWeight="SemiBold"
+                                          Foreground="#333333"
+                                          HorizontalAlignment="Center"
+                                          TextWrapping="Wrap"
+                                          TextAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Grid.Column="2" 
+                                Style="{StaticResource QuickActionButtonStyle}"
+                                Margin="0,0,10,0">
+                            <StackPanel>
+                                <TextBlock Text="➕" FontSize="32" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                                <TextBlock Text="Thêm tọa độ" 
+                                          FontSize="13" 
+                                          FontWeight="SemiBold"
+                                          Foreground="#333333"
+                                          HorizontalAlignment="Center"
+                                          TextWrapping="Wrap"
+                                          TextAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Grid.Column="3" 
+                                Style="{StaticResource QuickActionButtonStyle}">
+                            <StackPanel>
+                                <TextBlock Text="⚙️" FontSize="32" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                                <TextBlock Text="Cài đặt" 
+                                          FontSize="13" 
+                                          FontWeight="SemiBold"
+                                          Foreground="#333333"
+                                          HorizontalAlignment="Center"
+                                          TextWrapping="Wrap"
+                                          TextAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Charts Row -->
+            <Grid Grid.Row="3" Margin="0,0,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Activity Chart -->
+                <Border Grid.Column="0" 
+                        Background="White"
+                        CornerRadius="12"
+                        Padding="25">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Direction="270" ShadowDepth="2" Opacity="0.1" BlurRadius="8"/>
+                    </Border.Effect>
+                    
+                    <StackPanel>
+                        <Grid Margin="0,0,0,20">
+                            <StackPanel>
+                                <TextBlock Text="📈 Thống kê hoạt động" 
+                                          FontSize="18" 
+                                          FontWeight="Bold"
+                                          Foreground="#333333"/>
+                                <TextBlock Text="7 ngày gần đây" 
+                                          FontSize="12" 
+                                          Foreground="#888888"
+                                          Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Simple Bar Chart Visualization -->
+                        <Grid Height="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Simple bar representation -->
+                            <StackPanel Grid.Column="0" VerticalAlignment="Bottom" Margin="5,0">
+                                <Border Background="#4a7c2c" Height="120" CornerRadius="4,4,0,0"/>
+                                <TextBlock Text="T2" FontSize="11" Foreground="#888" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0">
+                                <Border Background="#4a7c2c" Height="95" CornerRadius="4,4,0,0"/>
+                                <TextBlock Text="T3" FontSize="11" Foreground="#888" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" VerticalAlignment="Bottom" Margin="5,0">
+                                <Border Background="#4a7c2c" Height="145" CornerRadius="4,4,0,0"/>
+                                <TextBlock Text="T4" FontSize="11" Foreground="#888" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3" VerticalAlignment="Bottom" Margin="5,0">
+                                <Border Background="#4a7c2c" Height="110" CornerRadius="4,4,0,0"/>
+                                <TextBlock Text="T5" FontSize="11" Foreground="#888" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="4" VerticalAlignment="Bottom" Margin="5,0">
+                                <Border Background="#4a7c2c" Height="165" CornerRadius="4,4,0,0"/>
+                                <TextBlock Text="T6" FontSize="11" Foreground="#888" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="5" VerticalAlignment="Bottom" Margin="5,0">
+                                <Border Background="#4a7c2c" Height="85" CornerRadius="4,4,0,0"/>
+                                <TextBlock Text="T7" FontSize="11" Foreground="#888" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="6" VerticalAlignment="Bottom" Margin="5,0">
+                                <Border Background="#6b9e4d" Height="180" CornerRadius="4,4,0,0"/>
+                                <TextBlock Text="CN" FontSize="11" Foreground="#4a7c2c" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- System Status -->
+                <Border Grid.Column="2" 
+                        Background="White"
+                        CornerRadius="12"
+                        Padding="25">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Direction="270" ShadowDepth="2" Opacity="0.1" BlurRadius="8"/>
+                    </Border.Effect>
+                    
+                    <StackPanel>
+                        <TextBlock Text="💻 Tình trạng hệ thống" 
+                                  FontSize="18" 
+                                  FontWeight="Bold"
+                                  Foreground="#333333"
+                                  Margin="0,0,0,25"/>
+
+                        <!-- System metrics -->
+                        <StackPanel Margin="0,0,0,20">
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="CPU" FontSize="12" Foreground="#666"/>
+                                <TextBlock Text="45%" FontSize="12" Foreground="#4CAF50" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                            </Grid>
+                            <Border Background="#F5F5F5" Height="8" CornerRadius="4">
+                                <Border Background="#4CAF50" HorizontalAlignment="Left" Width="90" CornerRadius="4"/>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,0,0,20">
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="RAM" FontSize="12" Foreground="#666"/>
+                                <TextBlock Text="67%" FontSize="12" Foreground="#FF9800" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                            </Grid>
+                            <Border Background="#F5F5F5" Height="8" CornerRadius="4">
+                                <Border Background="#FF9800" HorizontalAlignment="Left" Width="134" CornerRadius="4"/>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,0,0,20">
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="Disk" FontSize="12" Foreground="#666"/>
+                                <TextBlock Text="82%" FontSize="12" Foreground="#F44336" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                            </Grid>
+                            <Border Background="#F5F5F5" Height="8" CornerRadius="4">
+                                <Border Background="#F44336" HorizontalAlignment="Left" Width="164" CornerRadius="4"/>
+                            </Border>
+                        </StackPanel>
+
+                        <Border Background="#E8F5E9" 
+                               CornerRadius="8"
+                               Padding="15"
+                               Margin="0,10,0,0">
+                            <StackPanel>
+                                <Grid Margin="0,0,0,8">
+                                    <TextBlock Text="✓" FontSize="16" Foreground="#4CAF50" FontWeight="Bold"/>
+                                    <TextBlock Text="Hệ thống ổn định" 
+                                              FontSize="13" 
+                                              Foreground="#4CAF50"
+                                              FontWeight="SemiBold"
+                                              Margin="25,0,0,0"/>
+                                </Grid>
+                                <TextBlock Text="Tất cả dịch vụ đang hoạt động bình thường" 
+                                          FontSize="11" 
+                                          Foreground="#666666"
+                                          TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Recent Activity Table -->
+            <Border Grid.Row="4" 
+                    Background="White"
+                    CornerRadius="12"
+                    Padding="25"
+                    MinHeight="300">
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" Direction="270" ShadowDepth="2" Opacity="0.1" BlurRadius="8"/>
+                </Border.Effect>
+                
+                <StackPanel>
+                    <Grid Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="🕐 Hoạt động gần đây" 
+                                      FontSize="18" 
+                                      FontWeight="Bold"
+                                      Foreground="#333333"/>
+                            <TextBlock Text="Cập nhật theo thời gian thực" 
+                                      FontSize="12" 
+                                      Foreground="#888888"
+                                      Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Grid>
+
                     <syncfusion:SfDataGrid x:Name="gridRecentActivity"
                                           AutoGenerateColumns="False"
                                           ColumnSizer="Star"
                                           GridLinesVisibility="Horizontal"
-                                          HeaderRowHeight="40"
-                                          RowHeight="45">
+                                          HeaderRowHeight="45"
+                                          RowHeight="50"
+                                          AllowSorting="True"
+                                          SelectionMode="Single">
                         <syncfusion:SfDataGrid.Columns>
-                            <syncfusion:GridTextColumn HeaderText="Thời gian" 
+                            <syncfusion:GridTextColumn HeaderText="⏰ Thời gian" 
                                                       MappingName="Time" 
-                                                      Width="150"/>
-                            <syncfusion:GridTextColumn HeaderText="Hoạt động" 
+                                                      Width="140"/>
+                            <syncfusion:GridTextColumn HeaderText="📋 Hoạt động" 
                                                       MappingName="Activity"/>
-                            <syncfusion:GridTextColumn HeaderText="Người thực hiện" 
+                            <syncfusion:GridTextColumn HeaderText="👤 Người thực hiện" 
                                                       MappingName="User" 
                                                       Width="200"/>
-                            <syncfusion:GridTextColumn HeaderText="Trạng thái" 
-                                                      MappingName="Status" 
-                                                      Width="150"/>
+                            <syncfusion:GridTemplateColumn HeaderText="✓ Trạng thái" 
+                                                          MappingName="Status"
+                                                          Width="150">
+                                <syncfusion:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="12"
+                                               Padding="10,5"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Thành công">
+                                                            <Setter Property="Background" Value="#E8F5E9"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Đang xử lý">
+                                                            <Setter Property="Background" Value="#FFF3E0"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Thất bại">
+                                                            <Setter Property="Background" Value="#FFEBEE"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <TextBlock Text="{Binding Status}" 
+                                                      FontSize="12"
+                                                      FontWeight="SemiBold"
+                                                      HorizontalAlignment="Center">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Status}" Value="Thành công">
+                                                                <Setter Property="Foreground" Value="#4CAF50"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Status}" Value="Đang xử lý">
+                                                                <Setter Property="Foreground" Value="#FF9800"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Status}" Value="Thất bại">
+                                                                <Setter Property="Foreground" Value="#F44336"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </syncfusion:GridTemplateColumn.CellTemplate>
+                            </syncfusion:GridTemplateColumn>
                         </syncfusion:SfDataGrid.Columns>
                     </syncfusion:SfDataGrid>
                 </StackPanel>
             </Border>
-        </StackPanel>
+        </Grid>
     </ScrollViewer>
 </UserControl>

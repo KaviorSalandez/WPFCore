@@ -220,6 +220,61 @@ namespace MilitaryGeo.Desktop
             element.BeginAnimation(UIElement.OpacityProperty, fadeIn);
         }
 
+        private void rbSettings_Click(object sender, RoutedEventArgs e)
+        {
+            // Toggle submenu visibility
+            var isCurrentlyCollapsed = SettingsSubmenu.Visibility == Visibility.Collapsed;
+            
+            if (isCurrentlyCollapsed)
+            {
+                // Expand submenu
+                SettingsSubmenu.Visibility = Visibility.Visible;
+                
+                // Rotate arrow down
+                var rotateAnimation = new DoubleAnimation
+                {
+                    To = -90,
+                    Duration = TimeSpan.FromMilliseconds(200),
+                    EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
+                };
+                SettingsArrowRotate.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+                
+                // Fade in submenu items
+                SettingsSubmenu.Opacity = 0;
+                var fadeIn = new DoubleAnimation
+                {
+                    From = 0.0,
+                    To = 1.0,
+                    Duration = TimeSpan.FromMilliseconds(300)
+                };
+                SettingsSubmenu.BeginAnimation(UIElement.OpacityProperty, fadeIn);
+            }
+            else
+            {
+                // Rotate arrow back
+                var rotateAnimation = new DoubleAnimation
+                {
+                    To = 0,
+                    Duration = TimeSpan.FromMilliseconds(200),
+                    EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
+                };
+                SettingsArrowRotate.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+                
+                // Fade out and collapse
+                var fadeOut = new DoubleAnimation
+                {
+                    From = 1.0,
+                    To = 0.0,
+                    Duration = TimeSpan.FromMilliseconds(200)
+                };
+                fadeOut.Completed += (s, args) =>
+                {
+                    SettingsSubmenu.Visibility = Visibility.Collapsed;
+                };
+                SettingsSubmenu.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+            }
+        }
+
         private void OnMenuItemChecked(object sender, RoutedEventArgs e)
         {
             if (sender is RadioButton radioButton && radioButton.Tag != null)
@@ -240,7 +295,7 @@ namespace MilitaryGeo.Desktop
                     break;
 
                 case "MapManagement":
-                    view = CreatePlaceholderView("Quản lý bản đồ", "Chức năng quản lý bản đồ đang được phát triển...");
+                    view = new Map();
                     break;
 
                 case "DataManagement":
@@ -259,8 +314,33 @@ namespace MilitaryGeo.Desktop
                     view = new NguoiDung();
                     break;
 
+                // Settings submenu items
+                case "GeneralSettings":
+                    view = CreatePlaceholderView("Cài đặt chung", "Chức năng cài đặt chung: Ngôn ngữ, Múi giờ, Đơn vị đo lường...");
+                    break;
+
+                case "SecuritySettings":
+                    view = CreatePlaceholderView("Cài đặt bảo mật", "Chức năng cài đặt bảo mật: Mật khẩu, Phân quyền, Xác thực 2 yếu tố...");
+                    break;
+
+                case "MapSettings":
+                    view = CreatePlaceholderView("Cài đặt bản đồ", "Chức năng cài đặt bản đồ: API Keys, Layer mặc định, Cache...");
+                    break;
+
+                case "DatabaseSettings":
+                    view = CreatePlaceholderView("Cài đặt cơ sở dữ liệu", "Chức năng cài đặt CSDL: Connection string, Backup schedule...");
+                    break;
+
+                case "NotificationSettings":
+                    view = CreatePlaceholderView("Cài đặt thông báo", "Chức năng cài đặt thông báo: Email, SMS, Push notifications...");
+                    break;
+
+                case "BackupSettings":
+                    view = CreatePlaceholderView("Sao lưu & Phục hồi", "Chức năng sao lưu dữ liệu tự động và phục hồi hệ thống...");
+                    break;
+
                 case "Settings":
-                    view = CreatePlaceholderView("Cài đặt hệ thống", "Chức năng cài đặt hệ thống đang được phát triển...");
+                    view = CreatePlaceholderView("Cài đặt hệ thống", "Vui lòng chọn một mục cài đặt cụ thể từ menu bên trái.");
                     break;
 
                 case "Help":

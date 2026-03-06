@@ -21,5 +21,6 @@
     <PkgSyncfusion_SfRichTextBoxAdv_WPF Condition=" '$(PkgSyncfusion_SfRichTextBoxAdv_WPF)' == '' ">C:\Users\TECAPRO\.nuget\packages\syncfusion.sfrichtextboxadv.wpf\24.2.7</PkgSyncfusion_SfRichTextBoxAdv_WPF>
     <PkgSyncfusion_SfGrid_WPF Condition=" '$(PkgSyncfusion_SfGrid_WPF)' == '' ">C:\Users\TECAPRO\.nuget\packages\syncfusion.sfgrid.wpf\24.2.7</PkgSyncfusion_SfGrid_WPF>
     <PkgSyncfusion_PdfViewer_WPF Condition=" '$(PkgSyncfusion_PdfViewer_WPF)' == '' ">C:\Users\TECAPRO\.nuget\packages\syncfusion.pdfviewer.wpf\24.2.7</PkgSyncfusion_PdfViewer_WPF>
+    <PkgEsri_ArcGISRuntime_WPF Condition=" '$(PkgEsri_ArcGISRuntime_WPF)' == '' ">C:\Users\TECAPRO\.nuget\packages\esri.arcgisruntime.wpf\200.8.1</PkgEsri_ArcGISRuntime_WPF>
   </PropertyGroup>
 </Project>

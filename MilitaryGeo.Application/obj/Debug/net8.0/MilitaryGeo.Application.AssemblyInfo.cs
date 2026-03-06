@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MilitaryGeo.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e55c2b9838f5b836e926fa3311844a9ccd4312b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("MilitaryGeo.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MilitaryGeo.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

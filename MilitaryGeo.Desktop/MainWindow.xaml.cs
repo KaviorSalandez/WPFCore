@@ -74,7 +74,7 @@ namespace MilitaryGeo.Desktop
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void lnkForgotPassword_Click(object sender, RoutedEventArgs e)

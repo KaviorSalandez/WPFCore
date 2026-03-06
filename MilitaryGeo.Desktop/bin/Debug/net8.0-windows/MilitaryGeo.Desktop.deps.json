@@ -8,7 +8,14 @@
     ".NETCoreApp,Version=v8.0": {
       "MilitaryGeo.Desktop/1.0.0": {
         "dependencies": {
+          "CommunityToolkit.Mvvm": "8.2.2",
+          "Esri.ArcGISRuntime.WPF": "200.8.1",
           "Microsoft.Extensions.Configuration.Json": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0",
+          "MilitaryGeo.Application": "1.0.0",
+          "MilitaryGeo.Domain": "1.0.0",
+          "MilitaryGeo.Infrastructure": "1.0.0",
           "Syncfusion.DataGridExcelExport.Wpf": "24.2.7",
           "Syncfusion.PdfViewer.WPF": "24.2.7",
           "Syncfusion.SfRichTextBoxAdv.WPF": "24.2.7",
@@ -24,6 +31,229 @@
         },
         "runtime": {
           "MilitaryGeo.Desktop.dll": {}
+        }
+      },
+      "CommunityToolkit.Mvvm/8.2.2": {
+        "runtime": {
+          "lib/net6.0/CommunityToolkit.Mvvm.dll": {
+            "assemblyVersion": "8.2.0.0",
+            "fileVersion": "8.2.2.1"
+          }
+        }
+      },
+      "Esri.ArcGISRuntime/200.8.1": {
+        "dependencies": {
+          "Esri.ArcGISRuntime.runtimes.win": "200.8.1"
+        },
+        "runtime": {
+          "lib/net8.0/Esri.ArcGISRuntime.dll": {
+            "assemblyVersion": "200.8.1.0",
+            "fileVersion": "200.8.1.4758"
+          }
+        },
+        "resources": {
+          "lib/net8.0/ar/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net8.0/bg/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "bg"
+          },
+          "lib/net8.0/bs/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "bs"
+          },
+          "lib/net8.0/ca/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "ca"
+          },
+          "lib/net8.0/cs/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net8.0/da/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net8.0/de/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net8.0/el/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "el"
+          },
+          "lib/net8.0/es/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net8.0/et/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "et"
+          },
+          "lib/net8.0/fi/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "fi"
+          },
+          "lib/net8.0/fr/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net8.0/he/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "he"
+          },
+          "lib/net8.0/hr/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "hr"
+          },
+          "lib/net8.0/hu/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net8.0/id/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "id"
+          },
+          "lib/net8.0/it/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net8.0/ja/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net8.0/ko/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net8.0/lt/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "lt"
+          },
+          "lib/net8.0/lv/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "lv"
+          },
+          "lib/net8.0/nb-NO/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "nb-NO"
+          },
+          "lib/net8.0/nl/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net8.0/no/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "no"
+          },
+          "lib/net8.0/pl/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net8.0/pt-BR/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net8.0/pt-PT/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "pt-PT"
+          },
+          "lib/net8.0/ro/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "ro"
+          },
+          "lib/net8.0/ru/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net8.0/sk/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net8.0/sl/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "sl"
+          },
+          "lib/net8.0/sr/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "sr"
+          },
+          "lib/net8.0/sv/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net8.0/th/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "th"
+          },
+          "lib/net8.0/tr/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net8.0/uk/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "uk"
+          },
+          "lib/net8.0/vi/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "vi"
+          },
+          "lib/net8.0/zh-CN/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "zh-CN"
+          },
+          "lib/net8.0/zh-HK/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "zh-HK"
+          },
+          "lib/net8.0/zh-Hans/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/net8.0/zh-TW/Esri.ArcGISRuntime.resources.dll": {
+            "locale": "zh-TW"
+          }
+        }
+      },
+      "Esri.ArcGISRuntime.runtimes.win/200.8.1": {
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/RuntimeCoreNet200_8_1.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          },
+          "runtimes/win-arm64/native/runtimecore.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          },
+          "runtimes/win-arm64/native/runtimecoreAssembly.manifest": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/RuntimeCoreNet200_8_1.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          },
+          "runtimes/win-x64/native/runtimecore.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          },
+          "runtimes/win-x64/native/runtimecoreAssembly.manifest": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/RuntimeCoreNet200_8_1.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          },
+          "runtimes/win-x86/native/runtimecore.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          },
+          "runtimes/win-x86/native/runtimecoreAssembly.manifest": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Esri.ArcGISRuntime.WPF/200.8.1": {
+        "dependencies": {
+          "Esri.ArcGISRuntime": "200.8.1"
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/RuntimeCoreNet200_8_1.WPF.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          },
+          "runtimes/win-x64/native/RuntimeCoreNet200_8_1.WPF.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          },
+          "runtimes/win-x86/native/RuntimeCoreNet200_8_1.WPF.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "200.8.1.4758"
+          }
+        }
+      },
+      "FluentValidation/11.9.0": {
+        "runtime": {
+          "lib/net8.0/FluentValidation.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.9.0.0"
+          }
         }
       },
       "Microsoft.Extensions.Configuration/8.0.0": {
@@ -44,6 +274,17 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.53103"
           }
@@ -78,6 +319,25 @@
           }
         }
       },
+      "Microsoft.Extensions.DependencyInjection/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
       "Microsoft.Extensions.FileProviders.Abstractions/8.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0"
@@ -105,6 +365,33 @@
       "Microsoft.Extensions.FileSystemGlobbing/8.0.0": {
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Options.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.53103"
           }
@@ -644,6 +931,41 @@
             "fileVersion": "24.2.7.0"
           }
         }
+      },
+      "MilitaryGeo.Application/1.0.0": {
+        "dependencies": {
+          "FluentValidation": "11.9.0",
+          "MilitaryGeo.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MilitaryGeo.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MilitaryGeo.Domain/1.0.0": {
+        "runtime": {
+          "MilitaryGeo.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MilitaryGeo.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Esri.ArcGISRuntime.WPF": "200.8.1",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0",
+          "MilitaryGeo.Application": "1.0.0"
+        },
+        "runtime": {
+          "MilitaryGeo.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -652,6 +974,41 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CommunityToolkit.Mvvm/8.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r0g0k9tGYdrnz8R7T3x5UiokDffeevzK/2P/9SBL6fqLgN8B157MIi/bVUWI1KAz6ZorZrK9AdABCWUeXZZsvA==",
+      "path": "communitytoolkit.mvvm/8.2.2",
+      "hashPath": "communitytoolkit.mvvm.8.2.2.nupkg.sha512"
+    },
+    "Esri.ArcGISRuntime/200.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UgMtMSPn8DrAenadwVgsny7+O4ksk6jL2pi192rWGb/2GlJD9BpYweh+41OcMHqPNhxfSqmFC8uVkSjnaGVLcA==",
+      "path": "esri.arcgisruntime/200.8.1",
+      "hashPath": "esri.arcgisruntime.200.8.1.nupkg.sha512"
+    },
+    "Esri.ArcGISRuntime.runtimes.win/200.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3meR4RbgLum6lb/hwV7Vkf8fxpZ3P82B5bk7t6lZzPz8F7z/m9HhP2iEjX187TDTFwsSqHxDGtLGH+JoRENeWg==",
+      "path": "esri.arcgisruntime.runtimes.win/200.8.1",
+      "hashPath": "esri.arcgisruntime.runtimes.win.200.8.1.nupkg.sha512"
+    },
+    "Esri.ArcGISRuntime.WPF/200.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DfHkYCOQg73P14NDRnBBNxoThi+mmBQA/lrnxFnLvfZQui4yEX+1DrGb4IMXeUOM6DoBpuRK6cqpSG+3ACJcTA==",
+      "path": "esri.arcgisruntime.wpf/200.8.1",
+      "hashPath": "esri.arcgisruntime.wpf.200.8.1.nupkg.sha512"
+    },
+    "FluentValidation/11.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VneVlTvwYDkfHV5av3QrQ0amALgrLX6LV94wlYyEsh0B/klJBW7C8y2eAtj5tOZ3jH6CAVpr4s1ZGgew/QWyig==",
+      "path": "fluentvalidation/11.9.0",
+      "hashPath": "fluentvalidation.11.9.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/8.0.0": {
       "type": "package",
@@ -667,6 +1024,13 @@
       "path": "microsoft.extensions.configuration.abstractions/8.0.0",
       "hashPath": "microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Configuration.Binder/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mBMoXLsr5s1y2zOHWmKsE9veDcx8h1x/c3rz4baEdQKTeDcmQAPNbB54Pi/lhFO3K431eEq6PFbMgLaa6PHFfA==",
+      "path": "microsoft.extensions.configuration.binder/8.0.0",
+      "hashPath": "microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration.FileExtensions/8.0.0": {
       "type": "package",
       "serviceable": true,
@@ -680,6 +1044,20 @@
       "sha512": "sha512-C2wqUoh9OmRL1akaCcKSTmRU8z0kckfImG7zLNI8uyi47Lp+zd5LWAD17waPQEqCz3ioWOCrFUo+JJuoeZLOBw==",
       "path": "microsoft.extensions.configuration.json/8.0.0",
       "hashPath": "microsoft.extensions.configuration.json.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V8S3bsm50ig6JSyrbcJJ8bW2b9QLGouz+G1miK3UTaOWmMtFwNNNzUf4AleyDWUmTrWMLNnFSLEQtxmxgNQnNQ==",
+      "path": "microsoft.extensions.dependencyinjection/8.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.FileProviders.Abstractions/8.0.0": {
       "type": "package",
@@ -701,6 +1079,20 @@
       "sha512": "sha512-OK+670i7esqlQrPjdIKRbsyMCe9g5kSLpRRQGSr4Q58AOYEe/hCnfLZprh7viNisSUUQZmMrbbuDaIrP+V1ebQ==",
       "path": "microsoft.extensions.filesystemglobbing/8.0.0",
       "hashPath": "microsoft.extensions.filesystemglobbing.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JOVOfqpnqlVLUzINQ2fox8evY2SKLYJ3BV8QDe/Jyp21u1T7r45x/R/5QdteURMR5r01GxeJSBBUOCOyaNXA3g==",
+      "path": "microsoft.extensions.options/8.0.0",
+      "hashPath": "microsoft.extensions.options.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0f4DMRqEd50zQh+UyJc+/HiBsZ3vhAQALgdkcQEalSH1L2isdC7Yj54M3cyo5e+BeO5fcBQ7Dxly8XiBBcvRgw==",
+      "path": "microsoft.extensions.options.configurationextensions/8.0.0",
+      "hashPath": "microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Primitives/8.0.0": {
       "type": "package",
@@ -848,6 +1240,21 @@
       "sha512": "sha512-vL5jGwnO0CQb1cURQJFFC0O185z2neiW5Xu09tzbShhExiLRB+Pf77okq12OvBAj422mHD3cFFgulsv41VTJkg==",
       "path": "syncfusion.ui.wpf.net/24.2.7",
       "hashPath": "syncfusion.ui.wpf.net.24.2.7.nupkg.sha512"
+    },
+    "MilitaryGeo.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MilitaryGeo.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MilitaryGeo.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

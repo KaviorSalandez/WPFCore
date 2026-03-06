@@ -21,14 +21,16 @@
   <ItemGroup>
     <Folder Include="DataContext\" />
     <Folder Include="Utils\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Resources\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Popup\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Esri.ArcGISRuntime.WPF" Version="200.8.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
     <PackageReference Include="Syncfusion.DataGridExcelExport.Wpf" Version="24.2.7" />
     <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="24.2.7" />
     <PackageReference Include="Syncfusion.SfRichTextBoxAdv.WPF" Version="24.2.7" />
@@ -42,6 +44,12 @@
     <PackageReference Include="Syncfusion.Tools.WPF" Version="24.2.7" />
     <PackageReference Include="Syncfusion.UI.WPF.NET" Version="24.2.7" />
     <PackageReference Include="Syncfusion.XlsIO.Wpf" Version="24.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MilitaryGeo.Application\MilitaryGeo.Application.csproj" />
+    <ProjectReference Include="..\MilitaryGeo.Domain\MilitaryGeo.Domain.csproj" />
+    <ProjectReference Include="..\MilitaryGeo.Infrastructure\MilitaryGeo.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

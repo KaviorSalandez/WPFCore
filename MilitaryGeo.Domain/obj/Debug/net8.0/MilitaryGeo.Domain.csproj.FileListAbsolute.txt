@@ -5,6 +5,7 @@ D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Domain\obj\Debug\net8.0\MilitaryGeo.Domai
 D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Domain\obj\Debug\net8.0\MilitaryGeo.Domain.AssemblyInfoInputs.cache
 D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Domain\obj\Debug\net8.0\MilitaryGeo.Domain.AssemblyInfo.cs
 D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Domain\obj\Debug\net8.0\MilitaryGeo.Domain.csproj.CoreCompileInputs.cache
+D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Domain\obj\Debug\net8.0\MilitaryGeo.Domain.sourcelink.json
 D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Domain\obj\Debug\net8.0\MilitaryGeo.Domain.dll
 D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Domain\obj\Debug\net8.0\refint\MilitaryGeo.Domain.dll
 D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Domain\obj\Debug\net8.0\MilitaryGeo.Domain.pdb

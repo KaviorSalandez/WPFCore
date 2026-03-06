@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 D:\Data\AME\MilitaryGeo.QC\MilitaryGeo.Desktop\App.xaml
-4-1394412965
+61821928149
 4-1581410081
-7-1394857183
-301-515896691
-MainWindow.xaml;MainWorkSpace.xaml;UserControls\Dashboard.xaml;UserControls\NguoiDung.xaml;
+151890379802
+3121739830741
+MainWindow.xaml;MainWorkSpace.xaml;Popup\NguoiDung\AddNguoiDungWindow.xaml;UserControls\Dashboard.xaml;UserControls\Map.xaml;UserControls\NguoiDung.xaml;
 
 False
 

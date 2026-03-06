@@ -1,0 +1,46 @@
+## [Visual Studio]
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+SDK/
+bld/
+[Bb]in/
+[Oo]bj/
+[Log]/
+
+# Visual Studio 2015/2017/2019/2022 cache/options directory
+.vs/
+
+## [NuGet]
+# Restore artifacts
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+## [Code Analysis]
+*.pfx
+*.publishsettings
+
+## [ArcGIS & Syncfusion Cấu hình cá nhân]
+# Không nên đẩy API Key thật lên nếu là repo public
+# appsettings.Development.json
+
+## [Hệ điều hành]
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store

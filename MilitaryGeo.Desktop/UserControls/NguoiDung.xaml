@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MilitaryGeo.Desktop.UserControls"
+             xmlns:vm="clr-namespace:MilitaryGeo.Desktop.ViewModels"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1200"
@@ -13,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Header Section -->
@@ -33,7 +35,7 @@
                               FontWeight="Bold"
                               Foreground="#333333"
                               Margin="0,0,0,5"/>
-                    <TextBlock Text="Danh sách người dùng trong hệ thống" 
+                    <TextBlock Text="{Binding TotalUsersText}"
                               FontSize="13" 
                               Foreground="#666666"/>
                 </StackPanel>
@@ -41,6 +43,42 @@
                 <StackPanel Grid.Column="1" 
                            Orientation="Horizontal"
                            VerticalAlignment="Center">
+                    <Button Content="📥 Xuất Excel"
+                            Background="Transparent"
+                            Foreground="#2196F3"
+                            BorderBrush="#2196F3"
+                            BorderThickness="1"
+                            Padding="15,10"
+                            FontSize="13"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"
+                            Margin="0,0,10,0"
+                            Command="{Binding ExportCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                   BorderBrush="{TemplateBinding BorderBrush}"
+                                                   BorderThickness="{TemplateBinding BorderThickness}"
+                                                   CornerRadius="6"
+                                                   Padding="{TemplateBinding Padding}">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E3F2FD"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    
                     <Button Content="➕ Thêm người dùng"
                             Background="#4a7c2c"
                             Foreground="White"
@@ -49,7 +87,7 @@
                             FontWeight="SemiBold"
                             BorderThickness="0"
                             Cursor="Hand"
-                            Margin="10,0,0,0">
+                            Command="{Binding AddCommand}">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Template">
@@ -90,7 +128,10 @@
                 <!-- Search and Filter -->
                 <Grid Grid.Row="0" Margin="0,0,0,20">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
@@ -98,13 +139,12 @@
                            Background="#F5F5F5"
                            CornerRadius="6"
                            Height="40"
-                           MaxWidth="400"
-                           HorizontalAlignment="Left">
+                           Width="350"
+                           Margin="0,0,15,0">
                         <Grid>
-                            <TextBox x:Name="txtSearchUser"
-                                    Text="Tìm kiếm người dùng..."
+                            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                                     FontSize="13"
-                                    Foreground="#999999"
+                                    Foreground="#333333"
                                     Background="Transparent"
                                     BorderThickness="0"
                                     VerticalAlignment="Center"
@@ -114,19 +154,41 @@
                                       HorizontalAlignment="Right"
                                       VerticalAlignment="Center"
                                       Margin="0,0,12,0"
-                                      IsHitTestVisible="False"/>
+                                      IsHitTestVisible="False"
+                                      Opacity="0.5"/>
                         </Grid>
                     </Border>
 
-                    <Button Grid.Column="1"
-                            Content="🔄 Làm mới"
+                    <ComboBox Grid.Column="2"
+                             Width="150"
+                             Height="40"
+                             Margin="0,0,10,0"
+                             FontSize="13"
+                             VerticalContentAlignment="Center"
+                             ItemsSource="{Binding RoleFilters}"
+                             SelectedItem="{Binding SelectedRole}"/>
+
+                    <ComboBox Grid.Column="3"
+                             Width="150"
+                             Height="40"
+                             Margin="0,0,10,0"
+                             FontSize="13"
+                             VerticalContentAlignment="Center"
+                             ItemsSource="{Binding StatusFilters}"
+                             SelectedItem="{Binding SelectedStatus}"/>
+
+                    <Button Grid.Column="4"
+                            Content="🔄"
                             Background="Transparent"
                             Foreground="#4a7c2c"
                             BorderBrush="#4a7c2c"
                             BorderThickness="1"
-                            Padding="12,8"
-                            FontSize="13"
-                            Cursor="Hand">
+                            Width="40"
+                            Height="40"
+                            FontSize="16"
+                            Cursor="Hand"
+                            ToolTip="Làm mới"
+                            Command="{Binding RefreshCommand}">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Template">
@@ -135,8 +197,7 @@
                                             <Border Background="{TemplateBinding Background}"
                                                    BorderBrush="{TemplateBinding BorderBrush}"
                                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                                   CornerRadius="6"
-                                                   Padding="{TemplateBinding Padding}">
+                                                   CornerRadius="6">
                                                 <ContentPresenter HorizontalAlignment="Center" 
                                                                 VerticalAlignment="Center"/>
                                             </Border>
@@ -154,42 +215,98 @@
                 </Grid>
 
                 <!-- User Data Grid -->
-                <syncfusion:SfDataGrid x:Name="gridUsers"
-                                      Grid.Row="1"
+                <syncfusion:SfDataGrid Grid.Row="1"
+                                      ItemsSource="{Binding PagedUsers}"
                                       AutoGenerateColumns="False"
-                                      ColumnSizer="Star"
+                                      ColumnSizer="Auto"
                                       GridLinesVisibility="Horizontal"
                                       HeaderRowHeight="45"
                                       RowHeight="50"
                                       SelectionMode="Single"
                                       AllowEditing="False"
                                       AllowSorting="True"
-                                      AllowFiltering="True">
+                                      AllowFiltering="False">
                     <syncfusion:SfDataGrid.Columns>
                         <syncfusion:GridTextColumn HeaderText="ID" 
                                                   MappingName="Id" 
-                                                  Width="80"
+                                                  Width="70"
                                                   TextAlignment="Center"/>
                         <syncfusion:GridTextColumn HeaderText="Tên đăng nhập" 
                                                   MappingName="Username" 
-                                                  Width="150"/>
+                                                  Width="140"/>
                         <syncfusion:GridTextColumn HeaderText="Họ và tên" 
                                                   MappingName="FullName" 
-                                                  Width="200"/>
+                                                  Width="180"/>
                         <syncfusion:GridTextColumn HeaderText="Email" 
                                                   MappingName="Email" 
                                                   Width="220"/>
                         <syncfusion:GridTextColumn HeaderText="Số điện thoại" 
                                                   MappingName="Phone" 
                                                   Width="130"/>
+                        <syncfusion:GridTextColumn HeaderText="Đơn vị" 
+                                                  MappingName="Department" 
+                                                  Width="150"/>
+                        <syncfusion:GridTextColumn HeaderText="Chức vụ" 
+                                                  MappingName="Position" 
+                                                  Width="130"/>
                         <syncfusion:GridTextColumn HeaderText="Vai trò" 
                                                   MappingName="Role" 
-                                                  Width="120"/>
-                        <syncfusion:GridTextColumn HeaderText="Trạng thái" 
-                                                  MappingName="Status" 
-                                                  Width="110"/>
+                                                  Width="100"/>
+                        <syncfusion:GridTemplateColumn HeaderText="Ngày tạo" 
+                                                      MappingName="CreatedDate" 
+                                                      Width="120">
+                            <syncfusion:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CreatedDate, StringFormat='dd/MM/yyyy'}"
+                                              VerticalAlignment="Center"
+                                              Margin="10,0"/>
+                                </DataTemplate>
+                            </syncfusion:GridTemplateColumn.CellTemplate>
+                        </syncfusion:GridTemplateColumn>
+                        <syncfusion:GridTemplateColumn HeaderText="Trạng thái" 
+                                                      MappingName="Status"
+                                                      Width="110">
+                            <syncfusion:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="12"
+                                           Padding="8,4"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Status}" Value="Hoạt động">
+                                                        <Setter Property="Background" Value="#E8F5E9"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Status}" Value="Khóa">
+                                                        <Setter Property="Background" Value="#FFEBEE"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Text="{Binding Status}" 
+                                                  FontSize="12"
+                                                  FontWeight="SemiBold"
+                                                  HorizontalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Hoạt động">
+                                                            <Setter Property="Foreground" Value="#4CAF50"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Khóa">
+                                                            <Setter Property="Foreground" Value="#F44336"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </syncfusion:GridTemplateColumn.CellTemplate>
+                        </syncfusion:GridTemplateColumn>
                         <syncfusion:GridTemplateColumn HeaderText="Thao tác" 
-                                                      Width="150"
+                                                      Width="120"
                                                       TextAlignment="Center">
                             <syncfusion:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -197,26 +314,287 @@
                                               HorizontalAlignment="Center">
                                         <Button Content="✏️" 
                                                ToolTip="Chỉnh sửa"
-                                               Width="30" 
-                                               Height="30"
+                                               Width="32" 
+                                               Height="32"
                                                Margin="2"
-                                               Background="Transparent"
+                                               Background="#E3F2FD"
                                                BorderThickness="0"
-                                               Cursor="Hand"/>
+                                               Cursor="Hand"
+                                               Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                               CommandParameter="{Binding}">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="Button">
+                                                                <Border Background="{TemplateBinding Background}"
+                                                                       CornerRadius="4">
+                                                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                                                    VerticalAlignment="Center"/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="#BBDEFB"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                         <Button Content="🗑️" 
                                                ToolTip="Xóa"
-                                               Width="30" 
-                                               Height="30"
+                                               Width="32" 
+                                               Height="32"
                                                Margin="2"
-                                               Background="Transparent"
+                                               Background="#FFEBEE"
                                                BorderThickness="0"
-                                               Cursor="Hand"/>
+                                               Cursor="Hand"
+                                               Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                               CommandParameter="{Binding}">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="Button">
+                                                                <Border Background="{TemplateBinding Background}"
+                                                                       CornerRadius="4">
+                                                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                                                    VerticalAlignment="Center"/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="#FFCDD2"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </syncfusion:GridTemplateColumn.CellTemplate>
                         </syncfusion:GridTemplateColumn>
                     </syncfusion:SfDataGrid.Columns>
                 </syncfusion:SfDataGrid>
+            </Grid>
+        </Border>
+
+        <!-- Pagination Section -->
+        <Border Grid.Row="2" 
+                Background="White"
+                CornerRadius="8"
+                Padding="20,15"
+                Margin="0,20,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Page Size Selector -->
+                <StackPanel Grid.Column="0" 
+                           Orientation="Horizontal"
+                           VerticalAlignment="Center">
+                    <TextBlock Text="Hiển thị" 
+                              FontSize="13"
+                              Foreground="#666666"
+                              VerticalAlignment="Center"
+                              Margin="0,0,10,0"/>
+                    <ComboBox Width="80"
+                             Height="35"
+                             FontSize="13"
+                             VerticalContentAlignment="Center"
+                             ItemsSource="{Binding PageSizes}"
+                             SelectedItem="{Binding PageSize}"/>
+                    <TextBlock Text="/ trang" 
+                              FontSize="13"
+                              Foreground="#666666"
+                              VerticalAlignment="Center"
+                              Margin="10,0,0,0"/>
+                </StackPanel>
+
+                <!-- Page Info -->
+                <TextBlock Grid.Column="1"
+                          Text="{Binding PageInfo}"
+                          FontSize="13"
+                          Foreground="#666666"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"/>
+
+                <!-- Pagination Controls -->
+                <StackPanel Grid.Column="2" 
+                           Orientation="Horizontal"
+                           VerticalAlignment="Center">
+                    <Button Content="⏮"
+                            Width="35"
+                            Height="35"
+                            FontSize="14"
+                            Margin="2"
+                            Background="#F5F5F5"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            ToolTip="Trang đầu"
+                            Command="{Binding FirstPageCommand}"
+                            IsEnabled="{Binding CanGoToPreviousPage}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                   CornerRadius="4">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <Button Content="◀"
+                            Width="35"
+                            Height="35"
+                            FontSize="14"
+                            Margin="2"
+                            Background="#F5F5F5"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            ToolTip="Trang trước"
+                            Command="{Binding PreviousPageCommand}"
+                            IsEnabled="{Binding CanGoToPreviousPage}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                   CornerRadius="4">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <TextBox Text="{Binding CurrentPage, UpdateSourceTrigger=PropertyChanged}"
+                            Width="50"
+                            Height="35"
+                            FontSize="13"
+                            TextAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Margin="5,0"/>
+
+                    <TextBlock Text="/"
+                              FontSize="13"
+                              Foreground="#666666"
+                              VerticalAlignment="Center"
+                              Margin="5,0"/>
+
+                    <TextBlock Text="{Binding TotalPages}"
+                              FontSize="13"
+                              FontWeight="SemiBold"
+                              Foreground="#333333"
+                              VerticalAlignment="Center"
+                              Margin="5,0"/>
+
+                    <Button Content="▶"
+                            Width="35"
+                            Height="35"
+                            FontSize="14"
+                            Margin="2,0,2,0"
+                            Background="#F5F5F5"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            ToolTip="Trang sau"
+                            Command="{Binding NextPageCommand}"
+                            IsEnabled="{Binding CanGoToNextPage}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                   CornerRadius="4">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <Button Content="⏭"
+                            Width="35"
+                            Height="35"
+                            FontSize="14"
+                            Margin="2"
+                            Background="#F5F5F5"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            ToolTip="Trang cuối"
+                            Command="{Binding LastPageCommand}"
+                            IsEnabled="{Binding CanGoToNextPage}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                   CornerRadius="4">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E0E0E0"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>
