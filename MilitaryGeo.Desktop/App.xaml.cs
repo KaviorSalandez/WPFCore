@@ -45,6 +45,8 @@ namespace MilitaryGeo.Desktop
             // Register ViewModels
             services.AddTransient<AddNguoiDungViewModel>();
             services.AddTransient<NguoiDungViewModel>();
+            services.AddTransient<VaiTroViewModel>();
+            services.AddTransient<AddVaiTroViewModel>();
             services.AddTransient<MapViewModel>();
         }
 

@@ -1,14 +1,15 @@
-﻿<UserControl x:Class="MilitaryGeo.Desktop.UserControls.NguoiDung"
+﻿<UserControl x:Class="MilitaryGeo.Desktop.UserControls.VaiTro"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MilitaryGeo.Desktop.UserControls"
-             xmlns:vm="clr-namespace:MilitaryGeo.Desktop.ViewModels"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1200"
-             Background="#F5F5F5">
+             Background="#F5F5F5"
+			 xml:lang="vi-VN"
+             FontFamily="Segoe UI">
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -30,12 +31,12 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                    <TextBlock Text="Quản lý người dùng" 
+                    <TextBlock Text="Quản lý vai trò" 
                               FontSize="24" 
                               FontWeight="Bold"
                               Foreground="#333333"
                               Margin="0,0,0,5"/>
-                    <TextBlock Text="{Binding TotalUsersText}"
+                    <TextBlock Text="{Binding TotalRolesText}"
                               FontSize="13" 
                               Foreground="#666666"/>
                 </StackPanel>
@@ -79,7 +80,7 @@
                         </Button.Style>
                     </Button>
                     
-                    <Button Content="➕ Thêm người dùng"
+                    <Button Content="➕ Thêm vai trò"
                             Background="#4a7c2c"
                             Foreground="White"
                             Padding="15,10"
@@ -131,8 +132,6 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.Column="0"
@@ -159,35 +158,16 @@
                         </Grid>
                     </Border>
 
-                    <ComboBox Grid.Column="2"
-                             Width="150"
-                             Height="40"
-                             Margin="0,0,10,0"
-                             FontSize="13"
-                             VerticalContentAlignment="Center"
-                             ItemsSource="{Binding RoleFilters}"
-                             SelectedItem="{Binding SelectedRole}"/>
-
-                    <ComboBox Grid.Column="3"
-                             Width="150"
-                             Height="40"
-                             Margin="0,0,10,0"
-                             FontSize="13"
-                             VerticalContentAlignment="Center"
-                             ItemsSource="{Binding StatusFilters}"
-                             SelectedItem="{Binding SelectedStatus}"/>
-
-                    <Button Grid.Column="4"
-                            Content="🔄"
+                    <Button Grid.Column="2"
+                            Content="🔄 Làm mới"
                             Background="Transparent"
                             Foreground="#4a7c2c"
                             BorderBrush="#4a7c2c"
                             BorderThickness="1"
-                            Width="40"
+                            Padding="10"
                             Height="40"
-                            FontSize="16"
+                            FontSize="13"
                             Cursor="Hand"
-                            ToolTip="Làm mới"
                             Command="{Binding RefreshCommand}">
                         <Button.Style>
                             <Style TargetType="Button">
@@ -197,7 +177,8 @@
                                             <Border Background="{TemplateBinding Background}"
                                                    BorderBrush="{TemplateBinding BorderBrush}"
                                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                                   CornerRadius="6">
+                                                   CornerRadius="6"
+                                                   Padding="{TemplateBinding Padding}">
                                                 <ContentPresenter HorizontalAlignment="Center" 
                                                                 VerticalAlignment="Center"/>
                                             </Border>
@@ -214,9 +195,9 @@
                     </Button>
                 </Grid>
 
-                <!-- User Data Grid -->
+                <!-- Role Data Grid -->
                 <syncfusion:SfDataGrid Grid.Row="1"
-                                      ItemsSource="{Binding PagedUsers}"
+                                      ItemsSource="{Binding PagedRoles}"
                                       AutoGenerateColumns="False"
                                       ColumnSizer="Auto"
                                       GridLinesVisibility="Horizontal"
@@ -231,27 +212,19 @@
                                                   MappingName="Id" 
                                                   Width="70"
                                                   TextAlignment="Center"/>
-                        <syncfusion:GridTextColumn HeaderText="Tên đăng nhập" 
-                                                  MappingName="Username" 
-                                                  Width="140"/>
-                        <syncfusion:GridTextColumn HeaderText="Họ và tên" 
-                                                  MappingName="FullName" 
-                                                  Width="180"/>
-                        <syncfusion:GridTextColumn HeaderText="Email" 
-                                                  MappingName="Email" 
-                                                  Width="220"/>
-                        <syncfusion:GridTextColumn HeaderText="Số điện thoại" 
-                                                  MappingName="Phone" 
-                                                  Width="130"/>
-                        <syncfusion:GridTextColumn HeaderText="Đơn vị" 
-                                                  MappingName="Department" 
+                        <syncfusion:GridTextColumn HeaderText="Mã vai trò" 
+                                                  MappingName="MaVaiTro" 
                                                   Width="150"/>
-                        <syncfusion:GridTextColumn HeaderText="Chức vụ" 
-                                                  MappingName="Position" 
-                                                  Width="130"/>
-                        <syncfusion:GridTextColumn HeaderText="Vai trò" 
-                                                  MappingName="Role" 
-                                                  Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="Tên vai trò" 
+                                                  MappingName="TenVaiTro" 
+                                                  Width="200"/>
+                        <syncfusion:GridTextColumn HeaderText="Mô tả" 
+                                                  MappingName="MoTa" 
+                                                  Width="300"/>
+                        <syncfusion:GridTextColumn HeaderText="Thứ tự" 
+                                                  MappingName="ThuTu" 
+                                                  Width="90"
+                                                  TextAlignment="Center"/>
                         <syncfusion:GridTemplateColumn HeaderText="Ngày tạo" 
                                                       MappingName="CreatedDate" 
                                                       Width="120">
@@ -264,7 +237,7 @@
                             </syncfusion:GridTemplateColumn.CellTemplate>
                         </syncfusion:GridTemplateColumn>
                         <syncfusion:GridTemplateColumn HeaderText="Trạng thái" 
-                                                      MappingName="Status"
+                                                      MappingName="IsActive"
                                                       Width="110">
                             <syncfusion:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -275,26 +248,27 @@
                                         <Border.Style>
                                             <Style TargetType="Border">
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding Status}" Value="Hoạt động">
+                                                    <DataTrigger Binding="{Binding IsActive}" Value="True">
                                                         <Setter Property="Background" Value="#E8F5E9"/>
                                                     </DataTrigger>
-                                                    <DataTrigger Binding="{Binding Status}" Value="Khóa">
+                                                    <DataTrigger Binding="{Binding IsActive}" Value="False">
                                                         <Setter Property="Background" Value="#FFEBEE"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
-                                        <TextBlock Text="{Binding Status}" 
-                                                  FontSize="12"
+                                        <TextBlock FontSize="12"
                                                   FontWeight="SemiBold"
                                                   HorizontalAlignment="Center">
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Status}" Value="Hoạt động">
+                                                        <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                            <Setter Property="Text" Value="Hoạt động"/>
                                                             <Setter Property="Foreground" Value="#4CAF50"/>
                                                         </DataTrigger>
-                                                        <DataTrigger Binding="{Binding Status}" Value="Khóa">
+                                                        <DataTrigger Binding="{Binding IsActive}" Value="False">
+                                                            <Setter Property="Text" Value="Tắt"/>
                                                             <Setter Property="Foreground" Value="#F44336"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MilitaryGeo.Desktop.UserControls;
+using MenuItemModel = MilitaryGeo.Desktop.ViewModels.MenuItem;
 
 namespace MilitaryGeo.Desktop
 {
@@ -27,9 +29,13 @@ namespace MilitaryGeo.Desktop
         private const double CollapsedWidth = 70;
         private const double ExpandedWidth = 250;
 
+        public ObservableCollection<MenuItemModel> MenuItems { get; set; }
+
         public MainWorkSpace()
         {
             InitializeComponent();
+            LoadMenuData();
+            DataContext = this;
             // Load Dashboard by default
             LoadView("Dashboard");
         }
@@ -37,6 +43,107 @@ namespace MilitaryGeo.Desktop
         public MainWorkSpace(string username) : this()
         {
             txtUserName.Text = username;
+        }
+
+        private void LoadMenuData()
+        {
+            // Fake data - Sau này sẽ load từ API
+            MenuItems = new ObservableCollection<MenuItemModel>
+            {
+                new MenuItemModel
+                {
+                    Icon = "📊",
+                    Title = "Dashboard",
+                    ViewName = "Dashboard"
+                },
+                new MenuItemModel
+                {
+                    Icon = "🗺️",
+                    Title = "Quản lý bản đồ",
+                    ViewName = "MapManagement"
+                },
+                new MenuItemModel
+                {
+                    Icon = "📁",
+                    Title = "Quản lý dữ liệu",
+                    ViewName = "DataManagement"
+                },
+                new MenuItemModel
+                {
+                    Icon = "📍",
+                    Title = "Tọa độ địa lý",
+                    ViewName = "Coordinates"
+                },
+                new MenuItemModel
+                {
+                    Icon = "📈",
+                    Title = "Báo cáo",
+                    ViewName = "Reports"
+                },
+                new MenuItemModel
+                {
+                    Icon = "👥",
+                    Title = "Quản lý người dùng",
+                    ViewName = "UserManagement"
+                },
+                new MenuItemModel
+                {
+                    Icon = "🎭",
+                    Title = "Quản lý vai trò",
+                    ViewName = "RoleManagement"
+                },
+                new MenuItemModel
+                {
+                    Icon = "⚙️",
+                    Title = "Cài đặt hệ thống",
+                    ViewName = "Settings",
+                    SubMenuItems = new ObservableCollection<MenuItemModel>
+                    {
+                        new MenuItemModel
+                        {
+                            Icon = "○",
+                            Title = "Cài đặt chung",
+                            ViewName = "GeneralSettings"
+                        },
+                        new MenuItemModel
+                        {
+                            Icon = "○",
+                            Title = "Cài đặt bảo mật",
+                            ViewName = "SecuritySettings"
+                        },
+                        new MenuItemModel
+                        {
+                            Icon = "○",
+                            Title = "Cài đặt bản đồ",
+                            ViewName = "MapSettings"
+                        },
+                        new MenuItemModel
+                        {
+                            Icon = "○",
+                            Title = "Cơ sở dữ liệu",
+                            ViewName = "DatabaseSettings"
+                        },
+                        new MenuItemModel
+                        {
+                            Icon = "○",
+                            Title = "Thông báo",
+                            ViewName = "NotificationSettings"
+                        },
+                        new MenuItemModel
+                        {
+                            Icon = "○",
+                            Title = "Sao lưu và Phục hồi",
+                            ViewName = "BackupSettings"
+                        }
+                    }
+                },
+                new MenuItemModel
+                {
+                    Icon = "❓",
+                    Title = "Hướng dẫn",
+                    ViewName = "Help"
+                }
+            };
         }
 
         private void btnToggleMenu_Click(object sender, RoutedEventArgs e)
@@ -54,48 +161,26 @@ namespace MilitaryGeo.Desktop
             AnimateSidebarWidth(startWidth, endWidth, duration);
 
             // Toggle visibility of menu text with fade animation
-            var visibility = isSidebarCollapsed ? Visibility.Collapsed : Visibility.Visible;
-            
             if (isSidebarCollapsed)
             {
-                // Fade out then collapse
+                // Fade out menu header
                 FadeOutElement(txtMenuHeader, () => txtMenuHeader.Visibility = Visibility.Collapsed);
-                FadeOutElement(txtDashboard, () => txtDashboard.Visibility = Visibility.Collapsed);
-                FadeOutElement(txtMapManagement, () => txtMapManagement.Visibility = Visibility.Collapsed);
-                FadeOutElement(txtDataManagement, () => txtDataManagement.Visibility = Visibility.Collapsed);
-                FadeOutElement(txtCoordinates, () => txtCoordinates.Visibility = Visibility.Collapsed);
-                FadeOutElement(txtReports, () => txtReports.Visibility = Visibility.Collapsed);
-                FadeOutElement(txtUserManagement, () => txtUserManagement.Visibility = Visibility.Collapsed);
-                FadeOutElement(txtSettings, () => txtSettings.Visibility = Visibility.Collapsed);
-                FadeOutElement(txtHelp, () => txtHelp.Visibility = Visibility.Collapsed);
                 FadeOutElement(txtLogoText, () => txtLogoText.Visibility = Visibility.Collapsed);
-                MenuSeparator.Visibility = Visibility.Collapsed;
+                
+                // Hide all text in menu items via ItemsControl
+                AnimateMenuItemsCollapse();
             }
             else
             {
-                // Show then fade in
+                // Show menu header
                 txtMenuHeader.Visibility = Visibility.Visible;
-                txtDashboard.Visibility = Visibility.Visible;
-                txtMapManagement.Visibility = Visibility.Visible;
-                txtDataManagement.Visibility = Visibility.Visible;
-                txtCoordinates.Visibility = Visibility.Visible;
-                txtReports.Visibility = Visibility.Visible;
-                txtUserManagement.Visibility = Visibility.Visible;
-                txtSettings.Visibility = Visibility.Visible;
-                txtHelp.Visibility = Visibility.Visible;
                 txtLogoText.Visibility = Visibility.Visible;
-                MenuSeparator.Visibility = Visibility.Visible;
                 
                 FadeInElement(txtMenuHeader);
-                FadeInElement(txtDashboard);
-                FadeInElement(txtMapManagement);
-                FadeInElement(txtDataManagement);
-                FadeInElement(txtCoordinates);
-                FadeInElement(txtReports);
-                FadeInElement(txtUserManagement);
-                FadeInElement(txtSettings);
-                FadeInElement(txtHelp);
                 FadeInElement(txtLogoText);
+                
+                // Show all text in menu items
+                AnimateMenuItemsExpand();
             }
 
             // Rotate toggle button icon
@@ -115,49 +200,25 @@ namespace MilitaryGeo.Desktop
             };
 
             rotateTransform.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+        }
 
-            // Adjust padding for collapsed state
-            if (isSidebarCollapsed)
+        private void AnimateMenuItemsCollapse()
+        {
+            // Find all RadioButtons in MenuItemsControl and adjust their padding
+            foreach (var menuItem in MenuItems)
             {
-                // Center align menu items when collapsed
-                rbDashboard.Padding = new Thickness(0);
-                rbMapManagement.Padding = new Thickness(0);
-                rbDataManagement.Padding = new Thickness(0);
-                rbCoordinates.Padding = new Thickness(0);
-                rbReports.Padding = new Thickness(0);
-                rbUserManagement.Padding = new Thickness(0);
-                rbSettings.Padding = new Thickness(0);
-                rbHelp.Padding = new Thickness(0);
-
-                rbDashboard.HorizontalContentAlignment = HorizontalAlignment.Center;
-                rbMapManagement.HorizontalContentAlignment = HorizontalAlignment.Center;
-                rbDataManagement.HorizontalContentAlignment = HorizontalAlignment.Center;
-                rbCoordinates.HorizontalContentAlignment = HorizontalAlignment.Center;
-                rbReports.HorizontalContentAlignment = HorizontalAlignment.Center;
-                rbUserManagement.HorizontalContentAlignment = HorizontalAlignment.Center;
-                rbSettings.HorizontalContentAlignment = HorizontalAlignment.Center;
-                rbHelp.HorizontalContentAlignment = HorizontalAlignment.Center;
+                // This will be handled by XAML styling or triggers
+                // For now, just a placeholder
             }
-            else
-            {
-                // Restore left alignment when expanded
-                rbDashboard.Padding = new Thickness(20, 0, 0, 0);
-                rbMapManagement.Padding = new Thickness(20, 0, 0, 0);
-                rbDataManagement.Padding = new Thickness(20, 0, 0, 0);
-                rbCoordinates.Padding = new Thickness(20, 0, 0, 0);
-                rbReports.Padding = new Thickness(20, 0, 0, 0);
-                rbUserManagement.Padding = new Thickness(20, 0, 0, 0);
-                rbSettings.Padding = new Thickness(20, 0, 0, 0);
-                rbHelp.Padding = new Thickness(20, 0, 0, 0);
+        }
 
-                rbDashboard.HorizontalContentAlignment = HorizontalAlignment.Left;
-                rbMapManagement.HorizontalContentAlignment = HorizontalAlignment.Left;
-                rbDataManagement.HorizontalContentAlignment = HorizontalAlignment.Left;
-                rbCoordinates.HorizontalContentAlignment = HorizontalAlignment.Left;
-                rbReports.HorizontalContentAlignment = HorizontalAlignment.Left;
-                rbUserManagement.HorizontalContentAlignment = HorizontalAlignment.Left;
-                rbSettings.HorizontalContentAlignment = HorizontalAlignment.Left;
-                rbHelp.HorizontalContentAlignment = HorizontalAlignment.Left;
+        private void AnimateMenuItemsExpand()
+        {
+            // Find all RadioButtons in MenuItemsControl and restore their padding
+            foreach (var menuItem in MenuItems)
+            {
+                // This will be handled by XAML styling or triggers
+                // For now, just a placeholder
             }
         }
 
@@ -220,61 +281,6 @@ namespace MilitaryGeo.Desktop
             element.BeginAnimation(UIElement.OpacityProperty, fadeIn);
         }
 
-        private void rbSettings_Click(object sender, RoutedEventArgs e)
-        {
-            // Toggle submenu visibility
-            var isCurrentlyCollapsed = SettingsSubmenu.Visibility == Visibility.Collapsed;
-            
-            if (isCurrentlyCollapsed)
-            {
-                // Expand submenu
-                SettingsSubmenu.Visibility = Visibility.Visible;
-                
-                // Rotate arrow down
-                var rotateAnimation = new DoubleAnimation
-                {
-                    To = -90,
-                    Duration = TimeSpan.FromMilliseconds(200),
-                    EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
-                };
-                SettingsArrowRotate.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
-                
-                // Fade in submenu items
-                SettingsSubmenu.Opacity = 0;
-                var fadeIn = new DoubleAnimation
-                {
-                    From = 0.0,
-                    To = 1.0,
-                    Duration = TimeSpan.FromMilliseconds(300)
-                };
-                SettingsSubmenu.BeginAnimation(UIElement.OpacityProperty, fadeIn);
-            }
-            else
-            {
-                // Rotate arrow back
-                var rotateAnimation = new DoubleAnimation
-                {
-                    To = 0,
-                    Duration = TimeSpan.FromMilliseconds(200),
-                    EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
-                };
-                SettingsArrowRotate.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
-                
-                // Fade out and collapse
-                var fadeOut = new DoubleAnimation
-                {
-                    From = 1.0,
-                    To = 0.0,
-                    Duration = TimeSpan.FromMilliseconds(200)
-                };
-                fadeOut.Completed += (s, args) =>
-                {
-                    SettingsSubmenu.Visibility = Visibility.Collapsed;
-                };
-                SettingsSubmenu.BeginAnimation(UIElement.OpacityProperty, fadeOut);
-            }
-        }
-
         private void OnMenuItemChecked(object sender, RoutedEventArgs e)
         {
             if (sender is RadioButton radioButton && radioButton.Tag != null)
@@ -282,6 +288,95 @@ namespace MilitaryGeo.Desktop
                 string viewName = radioButton.Tag.ToString();
                 LoadView(viewName);
             }
+        }
+
+        private void OnDynamicMenuItemChecked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton && radioButton.Tag != null)
+            {
+                string viewName = radioButton.Tag.ToString();
+                LoadView(viewName);
+            }
+        }
+
+        private void OnMenuItemClick(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton)
+            {
+                var menuItem = radioButton.DataContext as MenuItemModel;
+                if (menuItem != null && menuItem.HasSubMenu)
+                {
+                    // Find the SubMenuItemsControl in the visual tree
+                    var parent = VisualTreeHelper.GetParent(radioButton);
+                    while (parent != null && !(parent is StackPanel))
+                    {
+                        parent = VisualTreeHelper.GetParent(parent);
+                    }
+
+                    if (parent is StackPanel stackPanel)
+                    {
+                        var subMenuControl = FindChild<ItemsControl>(stackPanel, "SubMenuItemsControl");
+                        if (subMenuControl != null)
+                        {
+                            var isCurrentlyCollapsed = subMenuControl.Visibility == Visibility.Collapsed;
+                            
+                            if (isCurrentlyCollapsed)
+                            {
+                                // Expand submenu
+                                subMenuControl.Visibility = Visibility.Visible;
+                                
+                                // Fade in submenu
+                                subMenuControl.Opacity = 0;
+                                var fadeIn = new DoubleAnimation
+                                {
+                                    From = 0.0,
+                                    To = 1.0,
+                                    Duration = TimeSpan.FromMilliseconds(300)
+                                };
+                                subMenuControl.BeginAnimation(UIElement.OpacityProperty, fadeIn);
+                            }
+                            else
+                            {
+                                // Fade out and collapse
+                                var fadeOut = new DoubleAnimation
+                                {
+                                    From = 1.0,
+                                    To = 0.0,
+                                    Duration = TimeSpan.FromMilliseconds(200)
+                                };
+                                fadeOut.Completed += (s, args) =>
+                                {
+                                    subMenuControl.Visibility = Visibility.Collapsed;
+                                };
+                                subMenuControl.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private T FindChild<T>(DependencyObject parent, string childName) where T : DependencyObject
+        {
+            if (parent == null) return null;
+
+            T foundChild = null;
+            int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < childrenCount; i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                
+                if (child is T typedChild && (string.IsNullOrEmpty(childName) || 
+                    (child is FrameworkElement fe && fe.Name == childName)))
+                {
+                    foundChild = typedChild;
+                    break;
+                }
+                
+                foundChild = FindChild<T>(child, childName);
+                if (foundChild != null) break;
+            }
+            return foundChild;
         }
 
         private void LoadView(string viewName)
@@ -312,6 +407,10 @@ namespace MilitaryGeo.Desktop
 
                 case "UserManagement":
                     view = new NguoiDung();
+                    break;
+
+                case "RoleManagement":
+                    view = new VaiTro();
                     break;
 
                 // Settings submenu items
