@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="DataContext\" />
     <Folder Include="Utils\" />
-    <Folder Include="Resources\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
 

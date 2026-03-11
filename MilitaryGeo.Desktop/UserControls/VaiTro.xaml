@@ -8,8 +8,7 @@
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1200"
              Background="#F5F5F5"
-			 xml:lang="vi-VN"
-             FontFamily="Segoe UI">
+             >
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -44,73 +43,15 @@
                 <StackPanel Grid.Column="1" 
                            Orientation="Horizontal"
                            VerticalAlignment="Center">
-                    <Button Content="📥 Xuất Excel"
-                            Background="Transparent"
-                            Foreground="#2196F3"
-                            BorderBrush="#2196F3"
-                            BorderThickness="1"
-                            Padding="15,10"
-                            FontSize="13"
-                            FontWeight="SemiBold"
-                            Cursor="Hand"
-                            Margin="0,0,10,0"
-                            Command="{Binding ExportCommand}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}"
-                                                   BorderBrush="{TemplateBinding BorderBrush}"
-                                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                                   CornerRadius="6"
-                                                   Padding="{TemplateBinding Padding}">
-                                                <ContentPresenter HorizontalAlignment="Center" 
-                                                                VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#E3F2FD"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                    
-                    <Button Content="➕ Thêm vai trò"
-                            Background="#4a7c2c"
-                            Foreground="White"
-                            Padding="15,10"
-                            FontSize="13"
-                            FontWeight="SemiBold"
-                            BorderThickness="0"
-                            Cursor="Hand"
-                            Command="{Binding AddCommand}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}"
-                                                   CornerRadius="6"
-                                                   Padding="{TemplateBinding Padding}">
-                                                <ContentPresenter HorizontalAlignment="Center" 
-                                                                VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#3d6624"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                    <Button Content="Xuất Excel"
+            Style="{StaticResource ModernExportBtn}"
+            Tag="{StaticResource IconExport}"
+            Command="{Binding ExportCommand}"
+            Margin="0,0,12,0"/>
+                    <Button Content="Thêm vai trò"
+                            Style="{StaticResource ModernPrimaryBtn}"
+                            Tag="{StaticResource IconAdd}"
+                            Command="{Binding AddCommand}"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -159,40 +100,12 @@
                     </Border>
 
                     <Button Grid.Column="2"
-                            Content="🔄 Làm mới"
-                            Background="Transparent"
-                            Foreground="#4a7c2c"
-                            BorderBrush="#4a7c2c"
-                            BorderThickness="1"
-                            Padding="10"
-                            Height="40"
-                            FontSize="13"
-                            Cursor="Hand"
-                            Command="{Binding RefreshCommand}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}"
-                                                   BorderBrush="{TemplateBinding BorderBrush}"
-                                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                                   CornerRadius="6"
-                                                   Padding="{TemplateBinding Padding}">
-                                                <ContentPresenter HorizontalAlignment="Center" 
-                                                                VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#E8F5E9"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                        Content="LÀM MỚI"
+                        Style="{StaticResource ModernSecondaryBtn}"
+                        Tag="{StaticResource IconRefresh}"
+                        Command="{Binding RefreshCommand}"
+                        Height="40"
+                        Margin="8,0,0,0"/>
                 </Grid>
 
                 <!-- Role Data Grid -->
@@ -214,20 +127,20 @@
                                                   TextAlignment="Center"/>
                         <syncfusion:GridTextColumn HeaderText="Mã vai trò" 
                                                   MappingName="MaVaiTro" 
-                                                  Width="150"/>
+                                                  Width="250"/>
                         <syncfusion:GridTextColumn HeaderText="Tên vai trò" 
                                                   MappingName="TenVaiTro" 
-                                                  Width="200"/>
+                                                  Width="300"/>
                         <syncfusion:GridTextColumn HeaderText="Mô tả" 
                                                   MappingName="MoTa" 
-                                                  Width="300"/>
+                                                  Width="500"/>
                         <syncfusion:GridTextColumn HeaderText="Thứ tự" 
                                                   MappingName="ThuTu" 
                                                   Width="90"
                                                   TextAlignment="Center"/>
                         <syncfusion:GridTemplateColumn HeaderText="Ngày tạo" 
-                                                      MappingName="CreatedDate" 
-                                                      Width="120">
+                                                      MappingName="CreatedDate" Width="150"
+                                                      >
                             <syncfusion:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding CreatedDate, StringFormat='dd/MM/yyyy'}"
@@ -284,70 +197,22 @@
                                                       TextAlignment="Center">
                             <syncfusion:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" 
-                                              HorizontalAlignment="Center">
-                                        <Button Content="✏️" 
-                                               ToolTip="Chỉnh sửa"
-                                               Width="32" 
-                                               Height="32"
-                                               Margin="2"
-                                               Background="#E3F2FD"
-                                               BorderThickness="0"
-                                               Cursor="Hand"
-                                               Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                               CommandParameter="{Binding}">
-                                            <Button.Style>
-                                                <Style TargetType="Button">
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate TargetType="Button">
-                                                                <Border Background="{TemplateBinding Background}"
-                                                                       CornerRadius="4">
-                                                                    <ContentPresenter HorizontalAlignment="Center" 
-                                                                                    VerticalAlignment="Center"/>
-                                                                </Border>
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Background" Value="#BBDEFB"/>
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Button.Style>
-                                        </Button>
-                                        <Button Content="🗑️" 
-                                               ToolTip="Xóa"
-                                               Width="32" 
-                                               Height="32"
-                                               Margin="2"
-                                               Background="#FFEBEE"
-                                               BorderThickness="0"
-                                               Cursor="Hand"
-                                               Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                               CommandParameter="{Binding}">
-                                            <Button.Style>
-                                                <Style TargetType="Button">
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate TargetType="Button">
-                                                                <Border Background="{TemplateBinding Background}"
-                                                                       CornerRadius="4">
-                                                                    <ContentPresenter HorizontalAlignment="Center" 
-                                                                                    VerticalAlignment="Center"/>
-                                                                </Border>
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Background" Value="#FFCDD2"/>
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Button.Style>
-                                        </Button>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                                        <Button Style="{StaticResource GridActionButton}"
+                                            Background="#E3F2FD" 
+                                            Foreground="{StaticResource InfoBlue}"
+                                            Tag="{StaticResource IconEdit}"
+                                            ToolTip="Chỉnh sửa"
+                                            Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"/>
+                                        <Button Style="{StaticResource GridActionButton}"
+                                            Background="#FFEBEE" 
+                                            Foreground="{StaticResource DangerRed}"
+                                            Tag="{StaticResource IconDelete}"
+                                            ToolTip="Xóa vai trò"
+                                            Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </syncfusion:GridTemplateColumn.CellTemplate>
@@ -358,11 +223,7 @@
         </Border>
 
         <!-- Pagination Section -->
-        <Border Grid.Row="2" 
-                Background="White"
-                CornerRadius="8"
-                Padding="20,15"
-                Margin="0,20,0,0">
+        <Border Grid.Row="2" Style="{StaticResource FormCard}" Margin="0,20,0,0" Padding="20,12">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -370,204 +231,51 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Page Size Selector -->
-                <StackPanel Grid.Column="0" 
-                           Orientation="Horizontal"
-                           VerticalAlignment="Center">
-                    <TextBlock Text="Hiển thị" 
-                              FontSize="13"
-                              Foreground="#666666"
-                              VerticalAlignment="Center"
-                              Margin="0,0,10,0"/>
-                    <ComboBox Width="80"
-                             Height="35"
-                             FontSize="13"
-                             VerticalContentAlignment="Center"
-                             ItemsSource="{Binding PageSizes}"
-                             SelectedItem="{Binding PageSize}"/>
-                    <TextBlock Text="/ trang" 
-                              FontSize="13"
-                              Foreground="#666666"
-                              VerticalAlignment="Center"
-                              Margin="10,0,0,0"/>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Hiển thị" Style="{StaticResource SubtitleText}" VerticalAlignment="Center"/>
+                    <ComboBox Style="{StaticResource ModernComboBox}" 
+                      Width="80" Margin="10,0"
+                      ItemsSource="{Binding PageSizes}"
+                      SelectedItem="{Binding PageSize}"/>
+                    <TextBlock Text="dòng / trang" Style="{StaticResource SubtitleText}" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <!-- Page Info -->
-                <TextBlock Grid.Column="1"
-                          Text="{Binding PageInfo}"
-                          FontSize="13"
-                          Foreground="#666666"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center"/>
+                <ContentControl Grid.Column="1" 
+                        Content="{Binding PageInfo}" 
+                        Style="{StaticResource ModernHintText}" 
+                        HorizontalAlignment="Center"/>
 
-                <!-- Pagination Controls -->
-                <StackPanel Grid.Column="2" 
-                           Orientation="Horizontal"
-                           VerticalAlignment="Center">
-                    <Button Content="⏮"
-                            Width="35"
-                            Height="35"
-                            FontSize="14"
-                            Margin="2"
-                            Background="#F5F5F5"
-                            BorderThickness="0"
-                            Cursor="Hand"
-                            ToolTip="Trang đầu"
-                            Command="{Binding FirstPageCommand}"
-                            IsEnabled="{Binding CanGoToPreviousPage}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}"
-                                                   CornerRadius="4">
-                                                <ContentPresenter HorizontalAlignment="Center" 
-                                                                VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#E0E0E0"/>
-                                    </Trigger>
-                                    <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Opacity" Value="0.5"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button Style="{StaticResource PaginationBtn}"
+                    Tag="{StaticResource IconFirstPage}"
+                    Command="{Binding FirstPageCommand}"
+                    IsEnabled="{Binding CanGoToPreviousPage}"
+                    ToolTip="Trang đầu"/>
 
-                    <Button Content="◀"
-                            Width="35"
-                            Height="35"
-                            FontSize="14"
-                            Margin="2"
-                            Background="#F5F5F5"
-                            BorderThickness="0"
-                            Cursor="Hand"
-                            ToolTip="Trang trước"
-                            Command="{Binding PreviousPageCommand}"
-                            IsEnabled="{Binding CanGoToPreviousPage}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}"
-                                                   CornerRadius="4">
-                                                <ContentPresenter HorizontalAlignment="Center" 
-                                                                VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#E0E0E0"/>
-                                    </Trigger>
-                                    <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Opacity" Value="0.5"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                    <Button Style="{StaticResource PaginationBtn}"
+                    Tag="{StaticResource IconPrev}"
+                    Command="{Binding PreviousPageCommand}"
+                    IsEnabled="{Binding CanGoToPreviousPage}"
+                    ToolTip="Trang trước"/>
 
-                    <TextBox Text="{Binding CurrentPage, UpdateSourceTrigger=PropertyChanged}"
-                            Width="50"
-                            Height="35"
-                            FontSize="13"
-                            TextAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Margin="5,0"/>
+                    <TextBox Style="{StaticResource PaginationInput}"
+                     Text="{Binding CurrentPage, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="8,0"/>
 
-                    <TextBlock Text="/"
-                              FontSize="13"
-                              Foreground="#666666"
-                              VerticalAlignment="Center"
-                              Margin="5,0"/>
+                    <TextBlock Text="/" VerticalAlignment="Center" Foreground="{StaticResource TextMuted}" Margin="0,0,8,0"/>
+                    <TextBlock Text="{Binding TotalPages}" VerticalAlignment="Center" FontWeight="Bold" Foreground="{StaticResource TextDark}" Margin="0,0,8,0"/>
 
-                    <TextBlock Text="{Binding TotalPages}"
-                              FontSize="13"
-                              FontWeight="SemiBold"
-                              Foreground="#333333"
-                              VerticalAlignment="Center"
-                              Margin="5,0"/>
+                    <Button Style="{StaticResource PaginationBtn}"
+                    Tag="{StaticResource IconNext}"
+                    Command="{Binding NextPageCommand}"
+                    IsEnabled="{Binding CanGoToNextPage}"
+                    ToolTip="Trang sau"/>
 
-                    <Button Content="▶"
-                            Width="35"
-                            Height="35"
-                            FontSize="14"
-                            Margin="2,0,2,0"
-                            Background="#F5F5F5"
-                            BorderThickness="0"
-                            Cursor="Hand"
-                            ToolTip="Trang sau"
-                            Command="{Binding NextPageCommand}"
-                            IsEnabled="{Binding CanGoToNextPage}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}"
-                                                   CornerRadius="4">
-                                                <ContentPresenter HorizontalAlignment="Center" 
-                                                                VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#E0E0E0"/>
-                                    </Trigger>
-                                    <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Opacity" Value="0.5"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-
-                    <Button Content="⏭"
-                            Width="35"
-                            Height="35"
-                            FontSize="14"
-                            Margin="2"
-                            Background="#F5F5F5"
-                            BorderThickness="0"
-                            Cursor="Hand"
-                            ToolTip="Trang cuối"
-                            Command="{Binding LastPageCommand}"
-                            IsEnabled="{Binding CanGoToNextPage}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}"
-                                                   CornerRadius="4">
-                                                <ContentPresenter HorizontalAlignment="Center" 
-                                                                VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#E0E0E0"/>
-                                    </Trigger>
-                                    <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Opacity" Value="0.5"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                    <Button Style="{StaticResource PaginationBtn}"
+                    Tag="{StaticResource IconLastPage}"
+                    Command="{Binding LastPageCommand}"
+                    IsEnabled="{Binding CanGoToNextPage}"
+                    ToolTip="Trang cuối"/>
                 </StackPanel>
             </Grid>
         </Border>

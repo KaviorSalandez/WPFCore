@@ -4,10 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MilitaryGeo.Desktop.UserControls"
-             xmlns:vm="clr-namespace:MilitaryGeo.Desktop.ViewModels"
+             xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013"
+             xmlns:converters="clr-namespace:MilitaryGeo.Desktop.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1200"
              Background="#F5F5F5">
+
+    <UserControl.Resources>
+        <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -268,7 +274,7 @@
 
                         <Button Content="📏 Đo khoảng cách"
                                Margin="0,0,0,10"
-                               Command="{Binding MeasureDistanceCommand}">
+                               Command="{Binding ToggleMeasureDistanceCommand}">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="#FFF3E0"/>
@@ -281,13 +287,18 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="Button">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                                <Border x:Name="bg" Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
                                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 </Border>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
                                     <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsMeasuringDistance}" Value="True">
+                                            <Setter Property="Background" Value="#FF9800"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="Content" Value="📏 Đang đo... (Nhấp để dừng)"/>
+                                        </DataTrigger>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background" Value="#FFE0B2"/>
                                         </Trigger>
@@ -298,7 +309,7 @@
 
                         <Button Content="📐 Đo diện tích"
                                Margin="0,0,0,10"
-                               Command="{Binding MeasureAreaCommand}">
+                               Command="{Binding ToggleMeasureAreaCommand}">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="#F3E5F5"/>
@@ -318,6 +329,11 @@
                                         </Setter.Value>
                                     </Setter>
                                     <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsMeasuringArea}" Value="True">
+                                            <Setter Property="Background" Value="#9C27B0"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="Content" Value="📐 Đang đo... (Nhấp để dừng)"/>
+                                        </DataTrigger>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background" Value="#E1BEE7"/>
                                         </Trigger>
@@ -326,7 +342,7 @@
                             </Button.Style>
                         </Button>
 
-                        <Button Content="🌍 Vị trí của tôi"
+                        <Button Content="🌍 Về Hà Nội"
                                Margin="0,0,0,10"
                                Command="{Binding GetMyLocationCommand}">
                             <Button.Style>
@@ -474,123 +490,111 @@
                 </ScrollViewer>
             </Border>
 
-            <!-- Right Panel - Map Display -->
+            <!-- Right Panel - ArcGIS MapView -->
             <Border Grid.Column="2" 
                     Background="White"
                     CornerRadius="12"
-                    Padding="20">
+                    Padding="5">
                 <Border.Effect>
                     <DropShadowEffect Color="Black" Direction="270" ShadowDepth="2" Opacity="0.1" BlurRadius="8"/>
                 </Border.Effect>
 
                 <Grid>
-                    <!-- Map Placeholder with Instructions -->
-                    <Border BorderBrush="#4CAF50"
-                           BorderThickness="2"
-                           CornerRadius="8">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#E8F5E9" Offset="0"/>
-                                <GradientStop Color="#C8E6C9" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="600">
-                            <TextBlock Text="🗺️" 
-                                      FontSize="64" 
-                                      HorizontalAlignment="Center"
-                                      Margin="0,0,0,20"/>
-                            
-                            <TextBlock Text="Khu vực hiển thị bản đồ ArcGIS" 
-                                      FontSize="24" 
-                                      FontWeight="Bold"
-                                      Foreground="#2E7D32"
-                                      HorizontalAlignment="Center"
-                                      Margin="0,0,0,15"/>
-                            
-                            <Border Background="White"
-                                   CornerRadius="8"
-                                   Padding="20"
-                                   Margin="0,10">
-                                <StackPanel>
-                                    <TextBlock Text="✅ Đã cấu hình:" 
-                                              FontSize="14" 
-                                              FontWeight="Bold"
-                                              Foreground="#333333"
-                                              Margin="0,0,0,10"/>
-                                    
-                                    <StackPanel Orientation="Horizontal" Margin="0,5">
-                                        <TextBlock Text="• " FontSize="13" Foreground="#666666"/>
-                                        <TextBlock Text="API Key: " FontSize="13" Foreground="#666666"/>
-                                        <TextBlock Text="{Binding ArcGISApiKey, Mode=OneWay}" 
-                                                  FontFamily="Consolas" 
-                                                  FontSize="11" 
-                                                  Foreground="#4CAF50"
-                                                  FontWeight="SemiBold"
-                                                  MaxWidth="400"
-                                                  TextTrimming="CharacterEllipsis"/>
-                                    </StackPanel>
-                                    
-                                    <StackPanel Orientation="Horizontal" Margin="0,5">
-                                        <TextBlock Text="• " FontSize="13" Foreground="#666666"/>
-                                        <TextBlock Text="Tọa độ mặc định: " FontSize="13" Foreground="#666666"/>
-                                        <TextBlock Text="Hà Nội, Việt Nam (21.0285°N, 105.8542°E)" 
-                                                  FontSize="13" 
-                                                  Foreground="#4CAF50"
-                                                  FontWeight="SemiBold"/>
-                                    </StackPanel>
-                                    
-                                    <StackPanel Orientation="Horizontal" Margin="0,5">
-                                        <TextBlock Text="• " FontSize="13" Foreground="#666666"/>
-                                        <TextBlock Text="Zoom level: " FontSize="13" Foreground="#666666"/>
-                                        <TextBlock Text="{Binding ZoomLevel}" 
-                                                  FontSize="13" 
-                                                  Foreground="#4CAF50"
-                                                  FontWeight="SemiBold"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Border>
-                            
-                            <Border Background="#FFF3E0"
-                                   BorderBrush="#FF9800"
-                                   BorderThickness="2"
-                                   CornerRadius="8"
-                                   Padding="15"
-                                   Margin="0,15">
-                                <StackPanel>
-                                    <TextBlock Text="📚 Hướng dẫn tích hợp ArcGIS Runtime:" 
-                                              FontSize="14" 
-                                              FontWeight="Bold"
-                                              Foreground="#E65100"
-                                              Margin="0,0,0,10"/>
-                                    
-                                    <TextBlock FontSize="12" Foreground="#666666" TextWrapping="Wrap" Margin="0,3">
-                                        <Run Text="1. Package đã cài: "/><Run Text="Esri.ArcGISRuntime.WPF v200.8.1" FontWeight="Bold" Foreground="#4CAF50"/>
-                                    </TextBlock>
-                                    
-                                    <TextBlock FontSize="12" Foreground="#666666" TextWrapping="Wrap" Margin="0,3">
-                                        <Run Text="2. Xem tài liệu ArcGIS tại: "/><Run Text="developers.arcgis.com" FontFamily="Consolas" Foreground="#1976D2" FontWeight="Bold"/>
-                                    </TextBlock>
-                                    
-                                    <TextBlock FontSize="12" Foreground="#666666" TextWrapping="Wrap" Margin="0,3">
-                                        <Run Text="3. Thêm MapView control vào vùng này"/>
-                                    </TextBlock>
-                                    
-                                    <TextBlock FontSize="12" Foreground="#666666" TextWrapping="Wrap" Margin="0,3">
-                                        <Run Text="4. Khởi tạo với API Key đã có trong ViewModel"/>
-                                    </TextBlock>
-                                </StackPanel>
-                            </Border>
-                            
-                            <TextBlock Text="Tất cả controls panel bên trái đã sẵn sàng và binding đầy đủ!" 
-                                      FontSize="13" 
-                                      Foreground="#666666"
-                                      HorizontalAlignment="Center"
-                                      Margin="0,15,0,0"
-                                      FontStyle="Italic"
-                                      TextWrapping="Wrap"
-                                      TextAlignment="Center"/>
+                    <!-- ArcGIS MapView -->
+                    <esri:MapView x:Name="MainMapView" ClipToBounds="True"/>
+
+                    <!-- Active Tool Indicator (hien thi khi dang do luong) -->
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Top"
+                            Margin="0,12,0,0" Padding="12,7" CornerRadius="20"
+                            Background="#CC1565C0">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMeasuringDistance}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsMeasuringArea}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="13" FontWeight="SemiBold" Foreground="White">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value=""/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsMeasuringDistance}" Value="True">
+                                                <Setter Property="Text" Value="📏 Chế độ đo khoảng cách — Nhấp lên bản đồ để thêm điểm"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsMeasuringArea}" Value="True">
+                                                <Setter Property="Text" Value="📐 Chế độ đo diện tích — Nhấp lên bản đồ để thêm điểm"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <Button Content="✕" Background="Transparent" BorderThickness="0"
+                                    Foreground="White" FontSize="13" Cursor="Hand"
+                                    Margin="10,0,0,0" Padding="0"
+                                    Command="{Binding ToggleMeasureDistanceCommand}">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <ContentPresenter/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsMeasuringDistance}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Button Content="✕" Background="Transparent" BorderThickness="0"
+                                    Foreground="White" FontSize="13" Cursor="Hand"
+                                    Margin="10,0,0,0" Padding="0"
+                                    Command="{Binding ToggleMeasureAreaCommand}">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <ContentPresenter/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsMeasuringArea}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
                         </StackPanel>
+                    </Border>
+
+                    <!-- Measurement Result Panel -->
+                    <Border HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                            Margin="12,0,0,12" Padding="14,10" CornerRadius="8"
+                            Background="#E6FFFFFF"
+                            Visibility="{Binding MeasurementResult, 
+                                Converter={StaticResource StringToVisibilityConverter}}">
+                        <Border.Effect>
+                            <DropShadowEffect Color="Black" Opacity="0.15" BlurRadius="8" ShadowDepth="1"/>
+                        </Border.Effect>
+                        <TextBlock Text="{Binding MeasurementResult}"
+                                   FontSize="13" FontWeight="SemiBold"
+                                   Foreground="#212529"/>
                     </Border>
 
                     <!-- Loading Overlay -->
@@ -598,11 +602,8 @@
                            Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="⏳" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-                            <TextBlock Text="Đang tải bản đồ..." 
-                                      FontSize="16" 
-                                      Foreground="White"
-                                      FontWeight="SemiBold"
-                                      HorizontalAlignment="Center"/>
+                            <TextBlock Text="Đang xử lý..." FontSize="16" Foreground="White"
+                                      FontWeight="SemiBold" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Border>
                 </Grid>

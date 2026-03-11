@@ -1,4 +1,4 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MilitaryGeo.Application.Interfaces;
 using MilitaryGeo.Domain.Entities;
@@ -9,7 +9,7 @@ namespace MilitaryGeo.Desktop.ViewModels;
 public partial class VaiTroViewModel : ObservableObject
 {
     private readonly IMessageService _messageService;
-    
+
     // Collections
     private ObservableCollection<VaiTro> allRoles = new();
     private ObservableCollection<VaiTro> filteredRoles = new();
@@ -32,10 +32,10 @@ public partial class VaiTroViewModel : ObservableObject
     private int totalPages = 1;
 
     [ObservableProperty]
-    private string pageInfo = "Hi?n th? 1-20 c?a 100 k?t qu?";
+    private string pageInfo = "Hiển thị 1-20 của 100 kết quả";
 
     [ObservableProperty]
-    private string totalRolesText = "T?ng s?: 0 vai tr�";
+    private string totalRolesText = "Tổng số: 0 vai trò";
 
     // Pagination Button States
     [ObservableProperty]
@@ -52,11 +52,11 @@ public partial class VaiTroViewModel : ObservableObject
     public VaiTroViewModel(IMessageService messageService)
     {
         _messageService = messageService ?? throw new ArgumentNullException(nameof(messageService));
-        
+
         System.Diagnostics.Debug.WriteLine("=== VaiTroViewModel Constructor Called ===");
-        
+
         LoadRoleData();
-        
+
         System.Diagnostics.Debug.WriteLine($"=== Loaded {allRoles.Count} roles ===");
         System.Diagnostics.Debug.WriteLine($"=== PagedRoles count: {PagedRoles.Count} ===");
     }
@@ -72,8 +72,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 1,
                     MaVaiTro = "ADMIN",
-                    TenVaiTro = "Qu?n tr? vi�n",
-                    MoTa = "C� to�n quy?n truy c?p v� qu?n l� h? th?ng",
+                    TenVaiTro = "Quản trị viên",
+                    MoTa = "Có toàn quyền truy cập và quản lý hệ thống",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":true,\"NguoiDung\":true,\"VaiTro\":true,\"CaiDat\":true,\"BaoCao\":true}",
                     ThuTu = 1,
@@ -83,8 +83,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 2,
                     MaVaiTro = "USER",
-                    TenVaiTro = "Ng??i d�ng",
-                    MoTa = "Quy?n s? d?ng c? b?n c?a h? th?ng",
+                    TenVaiTro = "Người dùng",
+                    MoTa = "Quyền sử dụng cơ bản của hệ thống",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":false,\"NguoiDung\":false,\"VaiTro\":false,\"CaiDat\":false,\"BaoCao\":true}",
                     ThuTu = 2,
@@ -94,8 +94,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 3,
                     MaVaiTro = "MANAGER",
-                    TenVaiTro = "Qu?n l�",
-                    MoTa = "Qu?n l� d? li?u v� ng??i d�ng trong h? th?ng",
+                    TenVaiTro = "Quản lý",
+                    MoTa = "Quản lý dữ liệu và người dùng trong hệ thống",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":true,\"NguoiDung\":true,\"VaiTro\":false,\"CaiDat\":false,\"BaoCao\":true}",
                     ThuTu = 3,
@@ -105,8 +105,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 4,
                     MaVaiTro = "VIEWER",
-                    TenVaiTro = "Ng??i xem",
-                    MoTa = "Ch? ???c xem th�ng tin, kh�ng ???c ch?nh s?a",
+                    TenVaiTro = "Người xem",
+                    MoTa = "Chỉ được xem thông tin, không được chỉnh sửa",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":false,\"NguoiDung\":false,\"VaiTro\":false,\"CaiDat\":false,\"BaoCao\":true}",
                     ThuTu = 4,
@@ -116,8 +116,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 5,
                     MaVaiTro = "ANALYST",
-                    TenVaiTro = "Ph�n t�ch vi�n",
-                    MoTa = "Ph�n t�ch d? li?u v� t?o b�o c�o h? th?ng",
+                    TenVaiTro = "Phân tích viên",
+                    MoTa = "Phân tích dữ liệu và tạo báo cáo hệ thống",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":true,\"NguoiDung\":false,\"VaiTro\":false,\"CaiDat\":false,\"BaoCao\":true}",
                     ThuTu = 5,
@@ -127,8 +127,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 6,
                     MaVaiTro = "GUEST",
-                    TenVaiTro = "Kh�ch",
-                    MoTa = "Quy?n truy c?p h?n ch?, ch? xem th�ng tin c? b?n",
+                    TenVaiTro = "Khách",
+                    MoTa = "Quyền truy cập hạn chế, chỉ xem thông tin cơ bản",
                     IsActive = false,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":false,\"DuLieu\":false,\"NguoiDung\":false,\"VaiTro\":false,\"CaiDat\":false,\"BaoCao\":false}",
                     ThuTu = 6,
@@ -138,8 +138,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 7,
                     MaVaiTro = "SUPERVISOR",
-                    TenVaiTro = "Gi�m s�t vi�n",
-                    MoTa = "Gi�m s�t ho?t ??ng v� theo d�i hi?u su?t h? th?ng",
+                    TenVaiTro = "Giám sát viên",
+                    MoTa = "Giám sát hoạt động và theo dõi hiệu suất hệ thống",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":true,\"NguoiDung\":true,\"VaiTro\":false,\"CaiDat\":false,\"BaoCao\":true}",
                     ThuTu = 7,
@@ -149,8 +149,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 8,
                     MaVaiTro = "OPERATOR",
-                    TenVaiTro = "V?n h�nh vi�n",
-                    MoTa = "V?n h�nh v� x? l� nghi?p v? h�ng ng�y",
+                    TenVaiTro = "Vận hành viên",
+                    MoTa = "Vận hành và xử lý nghiệp vụ hàng ngày",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":true,\"NguoiDung\":false,\"VaiTro\":false,\"CaiDat\":false,\"BaoCao\":true}",
                     ThuTu = 8,
@@ -160,8 +160,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 9,
                     MaVaiTro = "AUDITOR",
-                    TenVaiTro = "Ki?m to�n vi�n",
-                    MoTa = "Ki?m tra v� ?�nh gi� c�c ho?t ??ng h? th?ng",
+                    TenVaiTro = "Kiểm toán viên",
+                    MoTa = "Kiểm tra và đánh giá các hoạt động hệ thống",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":false,\"NguoiDung\":false,\"VaiTro\":false,\"CaiDat\":false,\"BaoCao\":true}",
                     ThuTu = 9,
@@ -171,8 +171,8 @@ public partial class VaiTroViewModel : ObservableObject
                 {
                     Id = 10,
                     MaVaiTro = "SUPPORT",
-                    TenVaiTro = "H? tr? k? thu?t",
-                    MoTa = "H? tr? ng??i d�ng v� x? l� s? c? k? thu?t",
+                    TenVaiTro = "Hỗ trợ kỹ thuật",
+                    MoTa = "Hỗ trợ người dùng và xử lý sự cố kỹ thuật",
                     IsActive = true,
                     Quyen = "{\"Dashboard\":true,\"BanDo\":true,\"DuLieu\":false,\"NguoiDung\":true,\"VaiTro\":false,\"CaiDat\":true,\"BaoCao\":false}",
                     ThuTu = 10,
@@ -184,7 +184,7 @@ public partial class VaiTroViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            _messageService.ShowError($"L?i khi kh?i t?o d? li?u: {ex.Message}");
+            _messageService.ShowError($"Lỗi khi khởi tạo dữ liệu: {ex.Message}");
         }
     }
 
@@ -214,7 +214,7 @@ public partial class VaiTroViewModel : ObservableObject
                 string.IsNullOrWhiteSpace(searchLower) ||
                 r.MaVaiTro.ToLower().Contains(searchLower) ||
                 r.TenVaiTro.ToLower().Contains(searchLower) ||
-                r.MoTa.ToLower().Contains(searchLower)
+                (r.MoTa != null && r.MoTa.ToLower().Contains(searchLower))
             )
         );
 
@@ -244,15 +244,15 @@ public partial class VaiTroViewModel : ObservableObject
 
     private void UpdatePaginationInfo()
     {
-        var startIndex = (CurrentPage - 1) * PageSize + 1;
+        var startIndex = filteredRoles.Count > 0 ? (CurrentPage - 1) * PageSize + 1 : 0;
         var endIndex = Math.Min(CurrentPage * PageSize, filteredRoles.Count);
         var total = filteredRoles.Count;
 
         PageInfo = total > 0
-            ? $"Hi?n th? {startIndex}-{endIndex} c?a {total} k?t qu?"
-            : "Kh�ng c� k?t qu?";
+            ? $"Hiển thị {startIndex}-{endIndex} của {total} kết quả"
+            : "Không có kết quả";
 
-        TotalRolesText = $"T?ng s?: {allRoles.Count} vai tr�";
+        TotalRolesText = $"Tổng số: {allRoles.Count} vai trò";
 
         CanGoToPreviousPage = CurrentPage > 1;
         CanGoToNextPage = CurrentPage < TotalPages;
@@ -299,13 +299,13 @@ public partial class VaiTroViewModel : ObservableObject
         try
         {
             System.Diagnostics.Debug.WriteLine("=== Add Command Executed ===");
-            
+
             var viewModel = App.GetService<AddVaiTroViewModel>();
             System.Diagnostics.Debug.WriteLine("=== AddVaiTroViewModel retrieved from DI ===");
-            
+
             var addWindow = new Popup.VaiTro.AddVaiTroWindow(viewModel);
             System.Diagnostics.Debug.WriteLine("=== AddVaiTroWindow created ===");
-            
+
             addWindow.ShowDialog();
 
             if (viewModel.IsSuccess && viewModel.CreatedRole != null)
@@ -314,14 +314,14 @@ public partial class VaiTroViewModel : ObservableObject
                 newRole.Id = allRoles.Count > 0 ? allRoles.Max(r => r.Id) + 1 : 1;
                 allRoles.Add(newRole);
                 ApplyFilters();
-                _messageService.ShowInfo($"?� th�m vai tr� '{newRole.TenVaiTro}' th�nh c�ng!");
+                _messageService.ShowInfo($"Đã thêm vai trò '{newRole.TenVaiTro}' thành công!");
             }
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"=== ERROR in Add Command: {ex.Message} ===");
             System.Diagnostics.Debug.WriteLine($"=== Stack Trace: {ex.StackTrace} ===");
-            _messageService.ShowError($"L?i khi th�m vai tr�: {ex.Message}");
+            _messageService.ShowError($"Lỗi khi thêm vai trò: {ex.Message}");
         }
     }
 
@@ -334,9 +334,9 @@ public partial class VaiTroViewModel : ObservableObject
         {
             var viewModel = App.GetService<AddVaiTroViewModel>();
             viewModel.LoadRole(role);
-            
+
             var editWindow = new Popup.VaiTro.AddVaiTroWindow(viewModel);
-            editWindow.Title = "Ch?nh s?a vai tr�";
+            editWindow.Title = "Chỉnh sửa vai trò";
             editWindow.ShowDialog();
 
             if (viewModel.IsSuccess)
@@ -348,12 +348,12 @@ public partial class VaiTroViewModel : ObservableObject
                     allRoles[index] = role;
                 }
                 ApplyFilters();
-                _messageService.ShowInfo($"?� c?p nh?t vai tr� '{role.TenVaiTro}' th�nh c�ng!");
+                _messageService.ShowInfo($"Đã cập nhật vai trò '{role.TenVaiTro}' thành công!");
             }
         }
         catch (Exception ex)
         {
-            _messageService.ShowError($"L?i khi ch?nh s?a vai tr�: {ex.Message}");
+            _messageService.ShowError($"Lỗi khi chỉnh sửa vai trò: {ex.Message}");
         }
     }
 
@@ -363,20 +363,20 @@ public partial class VaiTroViewModel : ObservableObject
         if (role == null) return;
 
         var isConfirmed = _messageService.ShowConfirmation(
-            $"B?n c� ch?c mu?n x�a vai tr� '{role.TenVaiTro}'?",
-            "X�c nh?n x�a");
+            $"Bạn có chắc muốn xóa vai trò '{role.TenVaiTro}'?",
+            "Xác nhận xóa");
 
         if (isConfirmed)
         {
             allRoles.Remove(role);
             ApplyFilters();
-            _messageService.ShowInfo("?� x�a vai tr� th�nh c�ng!");
+            _messageService.ShowInfo("Đã xóa vai trò thành công!");
         }
     }
 
     [RelayCommand]
     private void Export()
     {
-        _messageService.ShowInfo("Ch?c n?ng xu?t Excel ?ang ???c ph�t tri?n!");
+        _messageService.ShowInfo("Chức năng xuất Excel đang được phát triển!");
     }
 }

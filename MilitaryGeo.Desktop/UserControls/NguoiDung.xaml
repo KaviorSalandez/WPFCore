@@ -236,7 +236,7 @@
                                                   Width="140"/>
                         <syncfusion:GridTextColumn HeaderText="Họ và tên" 
                                                   MappingName="FullName" 
-                                                  Width="180"/>
+                                                  Width="280"/>
                         <syncfusion:GridTextColumn HeaderText="Email" 
                                                   MappingName="Email" 
                                                   Width="220"/>
